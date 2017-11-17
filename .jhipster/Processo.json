@@ -1,0 +1,54 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipValidateRules": "required",
+            "relationshipName": "advogadoCorrente",
+            "otherEntityName": "userExtra",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "processoAdvogadoCorrente"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": "required",
+            "relationshipName": "cliente",
+            "otherEntityName": "userExtra",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipValidateRules": "required",
+            "otherEntityRelationshipName": "processoAdvogado",
+            "relationshipName": "advogado",
+            "otherEntityName": "userExtra",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "numero",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "Status",
+            "fieldValues": "PENDENTE,PERDIDO,REALIZADO,REALIZANDO"
+        },
+        {
+            "fieldName": "parteadversa",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20171117234322",
+    "entityTableName": "processo",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false
+}

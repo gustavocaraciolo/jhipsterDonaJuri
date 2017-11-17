@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Processo.
+    -->
+    <changeSet id="20171117234322-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="advogado_corrente_id"
+                                 baseTableName="processo"
+                                 constraintName="fk_processo_advogado_corrente_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="user_extra"/>
+
+        <addForeignKeyConstraint baseColumnNames="cliente_id"
+                                 baseTableName="processo"
+                                 constraintName="fk_processo_cliente_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="user_extra"/>
+
+        <addForeignKeyConstraint baseColumnNames="processos_id"
+                                 baseTableName="processo_advogado"
+                                 constraintName="fk_processo_advogado_processos_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="processo"/>
+        <addForeignKeyConstraint baseColumnNames="advogados_id"
+                                 baseTableName="processo_advogado"
+                                 constraintName="fk_processo_advogado_advogados_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="user_extra"/>
+        
+    </changeSet>
+</databaseChangeLog>

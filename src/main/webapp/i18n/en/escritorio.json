@@ -1,0 +1,23 @@
+{
+    "discoveryApp": {
+        "escritorio" : {
+            "home": {
+                "title": "Escritorios",
+                "createLabel": "Create a new Escritorio",
+                "createOrEditLabel": "Create or edit a Escritorio"
+            },
+            "created": "A new Escritorio is created with identifier {{ param }}",
+            "updated": "A Escritorio is updated with identifier {{ param }}",
+            "deleted": "A Escritorio is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Escritorio {{ id }}?"
+            },
+            "detail": {
+                "title": "Escritorio"
+            },
+            "nome": "Nome",
+            "telefone": "Telefone",
+            "email": "Email"
+        }
+    }
+}

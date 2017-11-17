@@ -1,0 +1,33 @@
+
+<div *ngIf="escritorio">
+    <h2><span jhiTranslate="discoveryApp.escritorio.detail.title">Escritorio</span> {{escritorio.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="discoveryApp.escritorio.nome">Nome</span></dt>
+        <dd>
+            <span>{{escritorio.nome}}</span>
+        </dd>
+        <dt><span jhiTranslate="discoveryApp.escritorio.telefone">Telefone</span></dt>
+        <dd>
+            <span>{{escritorio.telefone}}</span>
+        </dd>
+        <dt><span jhiTranslate="discoveryApp.escritorio.email">Email</span></dt>
+        <dd>
+            <span>{{escritorio.email}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'escritorio/'+ escritorio.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,41 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipValidateRules": "required",
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "userExtra"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "processoAdvogadoCorrente",
+            "otherEntityName": "processo",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "advogadoCorrente"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "processoCliente",
+            "otherEntityName": "processo",
+            "otherEntityRelationshipName": "cliente"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "processoAdvogado",
+            "otherEntityName": "processo",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "advogado"
+        }
+    ],
+    "fields": [],
+    "changelogDate": "20171117234321",
+    "entityTableName": "user_extra",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false
+}

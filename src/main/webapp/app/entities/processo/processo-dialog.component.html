@@ -1,0 +1,88 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myProcessoLabel" jhiTranslate="discoveryApp.processo.home.createOrEditLabel">Create or edit a Processo</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!processo.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="processo.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="discoveryApp.processo.numero" for="field_numero">Numero</label>
+            <input type="text" class="form-control" name="numero" id="field_numero"
+                [(ngModel)]="processo.numero" required />
+            <div [hidden]="!(editForm.controls.numero?.dirty && editForm.controls.numero?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.numero?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="discoveryApp.processo.status" for="field_status">Status</label>
+            <select class="form-control" name="status" [(ngModel)]="processo.status" id="field_status" >
+                <option value="PENDENTE">{{'discoveryApp.Status.PENDENTE' | translate}}</option>
+                <option value="PERDIDO">{{'discoveryApp.Status.PERDIDO' | translate}}</option>
+                <option value="REALIZADO">{{'discoveryApp.Status.REALIZADO' | translate}}</option>
+                <option value="REALIZANDO">{{'discoveryApp.Status.REALIZANDO' | translate}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="discoveryApp.processo.parteadversa" for="field_parteadversa">Parteadversa</label>
+            <input type="text" class="form-control" name="parteadversa" id="field_parteadversa"
+                [(ngModel)]="processo.parteadversa"  />
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="discoveryApp.processo.advogadoCorrente" for="field_advogadoCorrente">Advogado Corrente</label>
+            <select class="form-control" id="field_advogadoCorrente" name="advogadoCorrente" [(ngModel)]="processo.advogadoCorrenteId" required>
+                <option *ngIf="!editForm.value.advogadoCorrente" [ngValue]="null" selected></option>
+                <option [ngValue]="userExtraOption.id" *ngFor="let userExtraOption of advogadocorrentes; trackBy: trackUserExtraById">{{userExtraOption.id}}</option>
+            </select>
+        </div>
+        <div [hidden]="!(editForm.controls.advogadoCorrente?.dirty && editForm.controls.advogadoCorrente?.invalid)">
+            <small class="form-text text-danger"
+                [hidden]="!editForm.controls.advogadoCorrente?.errors?.required" jhiTranslate="entity.validation.required">
+                This field is required.
+            </small>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="discoveryApp.processo.cliente" for="field_cliente">Cliente</label>
+            <select class="form-control" id="field_cliente" name="cliente" [(ngModel)]="processo.clienteId"  required>
+                <option *ngIf="!editForm.value.cliente" [ngValue]="null" selected></option>
+                <option [ngValue]="userExtraOption.id" *ngFor="let userExtraOption of userextras; trackBy: trackUserExtraById">{{userExtraOption.id}}</option>
+            </select>
+        </div>
+        <div [hidden]="!(editForm.controls.cliente?.dirty && editForm.controls.cliente?.invalid)">
+            <small class="form-text text-danger"
+                [hidden]="!editForm.controls.cliente?.errors?.required" jhiTranslate="entity.validation.required">
+                This field is required.
+            </small>
+        </div>
+        <div class="form-group">
+            <label jhiTranslate="discoveryApp.processo.advogado" for="field_advogado">Advogado</label>
+            <select class="form-control" id="field_advogado" multiple name="advogado" [(ngModel)]="processo.advogados" required>
+                <option [ngValue]="getSelected(processo.advogados, userExtraOption)" *ngFor="let userExtraOption of userextras; trackBy: trackUserExtraById">{{userExtraOption.id}}</option>
+            </select>
+        </div>
+        <div [hidden]="!(editForm.controls.advogado?.dirty && editForm.controls.advogado?.invalid)">
+            <small class="form-text text-danger"
+                [hidden]="!editForm.controls.advogado?.errors?.required" jhiTranslate="entity.validation.required">
+                This field is required.
+            </small>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

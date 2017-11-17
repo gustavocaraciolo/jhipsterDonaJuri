@@ -1,0 +1,11 @@
+{
+    "discoveryApp": {
+        "Status" : {
+            "null": "",
+            "PENDENTE": "PENDENTE",
+            "PERDIDO": "PERDIDO",
+            "REALIZADO": "REALIZADO",
+            "REALIZANDO": "REALIZANDO"
+        }
+    }
+}

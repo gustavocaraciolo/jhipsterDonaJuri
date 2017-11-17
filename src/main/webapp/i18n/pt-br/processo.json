@@ -1,0 +1,26 @@
+{
+    "discoveryApp": {
+        "processo" : {
+            "home": {
+                "title": "Processos",
+                "createLabel": "Criar novo Processo",
+                "createOrEditLabel": "Criar ou editar Processo"
+            },
+            "created": "Um novo Processo foi criado com o identificador {{ param }}",
+            "updated": "Um Processo foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Processo foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Processo {{ id }}?"
+            },
+            "detail": {
+                "title": "Processo"
+            },
+            "numero": "Numero",
+            "status": "Status",
+            "parteadversa": "Parteadversa",
+            "advogadoCorrente": "Advogado Corrente",
+            "cliente": "Cliente",
+            "advogado": "Advogado"
+        }
+    }
+}
