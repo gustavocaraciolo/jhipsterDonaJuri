@@ -1,0 +1,39 @@
+entity Escritorio{
+    nome String required,
+    telefone String,
+    email String
+}
+
+entity UserExtra{
+
+}
+
+entity Processo{
+    numero String required,
+    status Status,
+    parte_adversa String
+}
+
+enum Status {
+    PENDENTE,
+    PERDIDO,
+    REALIZADO,
+    REALIZANDO
+}
+
+relationship ManyToMany{
+    Processo{advogado required} to UserExtra{processoAdvogado}
+}
+
+relationship ManyToOne{
+    Processo{cliente required} to UserExtra{processoCliente}
+}
+
+relationship OneToOne{
+    Processo{advogadoCorrente required} to UserExtra{processoAdvogadoCorrente},
+    User{userExtra} to UserExtra{user required}
+}
+
+paginate all with pagination
+dto * with mapstruct
+service all with serviceImpl
