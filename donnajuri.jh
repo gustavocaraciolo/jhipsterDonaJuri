@@ -31,7 +31,7 @@ relationship ManyToOne{
 
 relationship OneToOne{
     Processo{advogadoCorrente required} to UserExtra{processoAdvogadoCorrente},
-    User{userExtra} to UserExtra{user required}
+    UserExtra{user} to User{userExtra}
 }
 
 paginate all with pagination
