@@ -78,6 +78,21 @@ public class UserExtraServiceImpl implements UserExtraService{
             .collect(Collectors.toCollection(LinkedList::new));
     }
 
+
+    /**
+     *  get all the userExtras where Escritorio is null.
+     *  @return the list of entities
+     */
+    @Transactional(readOnly = true) 
+    public List<UserExtraDTO> findAllWhereEscritorioIsNull() {
+        log.debug("Request to get all userExtras where Escritorio is null");
+        return StreamSupport
+            .stream(userExtraRepository.findAll().spliterator(), false)
+            .filter(userExtra -> userExtra.getEscritorio() == null)
+            .map(userExtraMapper::toDto)
+            .collect(Collectors.toCollection(LinkedList::new));
+    }
+
     /**
      *  Get one userExtra by id.
      *

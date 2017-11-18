@@ -11,6 +11,7 @@ import { UserExtraPopupService } from './user-extra-popup.service';
 import { UserExtraService } from './user-extra.service';
 import { User, UserService } from '../../shared';
 import { Processo, ProcessoService } from '../processo';
+import { Escritorio, EscritorioService } from '../escritorio';
 import { ResponseWrapper } from '../../shared';
 
 @Component({
@@ -26,12 +27,15 @@ export class UserExtraDialogComponent implements OnInit {
 
     processos: Processo[];
 
+    escritorios: Escritorio[];
+
     constructor(
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
         private userExtraService: UserExtraService,
         private userService: UserService,
         private processoService: ProcessoService,
+        private escritorioService: EscritorioService,
         private eventManager: JhiEventManager
     ) {
     }
@@ -42,6 +46,8 @@ export class UserExtraDialogComponent implements OnInit {
             .subscribe((res: ResponseWrapper) => { this.users = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
         this.processoService.query()
             .subscribe((res: ResponseWrapper) => { this.processos = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
+        this.escritorioService.query()
+            .subscribe((res: ResponseWrapper) => { this.escritorios = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
     }
 
     clear() {
@@ -83,6 +89,10 @@ export class UserExtraDialogComponent implements OnInit {
     }
 
     trackProcessoById(index: number, item: Processo) {
+        return item.id;
+    }
+
+    trackEscritorioById(index: number, item: Escritorio) {
         return item.id;
     }
 

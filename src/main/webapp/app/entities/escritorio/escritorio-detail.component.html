@@ -16,6 +16,12 @@
         <dd>
             <span>{{escritorio.email}}</span>
         </dd>
+        <dt><span jhiTranslate="discoveryApp.escritorio.userExtra">User Extra</span></dt>
+        <dd>
+            <div *ngIf="escritorio.userExtraId">
+                <a [routerLink]="['/user-extra', escritorio.userExtraId]">{{escritorio.userExtraId}}</a>
+            </div>
+        </dd>
     </dl>
 
     <button type="submit"

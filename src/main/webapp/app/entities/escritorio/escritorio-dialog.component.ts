@@ -9,6 +9,8 @@ import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { Escritorio } from './escritorio.model';
 import { EscritorioPopupService } from './escritorio-popup.service';
 import { EscritorioService } from './escritorio.service';
+import { UserExtra, UserExtraService } from '../user-extra';
+import { ResponseWrapper } from '../../shared';
 
 @Component({
     selector: 'jhi-escritorio-dialog',
@@ -19,16 +21,32 @@ export class EscritorioDialogComponent implements OnInit {
     escritorio: Escritorio;
     isSaving: boolean;
 
+    userextras: UserExtra[];
+
     constructor(
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
         private escritorioService: EscritorioService,
+        private userExtraService: UserExtraService,
         private eventManager: JhiEventManager
     ) {
     }
 
     ngOnInit() {
         this.isSaving = false;
+        this.userExtraService
+            .query({filter: 'escritorio-is-null'})
+            .subscribe((res: ResponseWrapper) => {
+                if (!this.escritorio.userExtraId) {
+                    this.userextras = res.json;
+                } else {
+                    this.userExtraService
+                        .find(this.escritorio.userExtraId)
+                        .subscribe((subRes: UserExtra) => {
+                            this.userextras = [subRes].concat(res.json);
+                        }, (subRes: ResponseWrapper) => this.onError(subRes.json));
+                }
+            }, (res: ResponseWrapper) => this.onError(res.json));
     }
 
     clear() {
@@ -63,6 +81,10 @@ export class EscritorioDialogComponent implements OnInit {
 
     private onError(error: any) {
         this.jhiAlertService.error(error.message, null, null);
+    }
+
+    trackUserExtraById(index: number, item: UserExtra) {
+        return item.id;
     }
 }
 

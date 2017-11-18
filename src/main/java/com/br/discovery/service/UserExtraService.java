@@ -31,6 +31,12 @@ public interface UserExtraService {
      *  @return the list of entities
      */
     List<UserExtraDTO> findAllWhereProcessoAdvogadoCorrenteIsNull();
+    /**
+     *  Get all the UserExtraDTO where Escritorio is null.
+     *
+     *  @return the list of entities
+     */
+    List<UserExtraDTO> findAllWhereEscritorioIsNull();
 
     /**
      *  Get the "id" userExtra.

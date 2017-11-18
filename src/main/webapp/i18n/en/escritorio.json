@@ -17,7 +17,8 @@
             },
             "nome": "Nome",
             "telefone": "Telefone",
-            "email": "Email"
+            "email": "Email",
+            "userExtra": "User Extra"
         }
     }
 }

@@ -32,6 +32,11 @@ public class Escritorio implements Serializable {
     @Column(name = "email")
     private String email;
 
+    @OneToOne(optional = false)
+    @NotNull
+    @JoinColumn(unique = true)
+    private UserExtra userExtra;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -78,6 +83,19 @@ public class Escritorio implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public UserExtra getUserExtra() {
+        return userExtra;
+    }
+
+    public Escritorio userExtra(UserExtra userExtra) {
+        this.userExtra = userExtra;
+        return this;
+    }
+
+    public void setUserExtra(UserExtra userExtra) {
+        this.userExtra = userExtra;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

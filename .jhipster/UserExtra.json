@@ -18,6 +18,13 @@
             "otherEntityRelationshipName": "advogadoCorrente"
         },
         {
+            "relationshipType": "one-to-one",
+            "relationshipName": "escritorio",
+            "otherEntityName": "escritorio",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "userExtra"
+        },
+        {
             "relationshipType": "one-to-many",
             "relationshipName": "processoCliente",
             "otherEntityName": "processo",

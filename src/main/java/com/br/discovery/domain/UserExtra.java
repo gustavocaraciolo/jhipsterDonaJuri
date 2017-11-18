@@ -34,6 +34,10 @@ public class UserExtra implements Serializable {
     @JsonIgnore
     private Processo processoAdvogadoCorrente;
 
+    @OneToOne(mappedBy = "userExtra")
+    @JsonIgnore
+    private Escritorio escritorio;
+
     @OneToMany(mappedBy = "cliente")
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -77,6 +81,19 @@ public class UserExtra implements Serializable {
 
     public void setProcessoAdvogadoCorrente(Processo processo) {
         this.processoAdvogadoCorrente = processo;
+    }
+
+    public Escritorio getEscritorio() {
+        return escritorio;
+    }
+
+    public UserExtra escritorio(Escritorio escritorio) {
+        this.escritorio = escritorio;
+        return this;
+    }
+
+    public void setEscritorio(Escritorio escritorio) {
+        this.escritorio = escritorio;
     }
 
     public Set<Processo> getProcessoClientes() {
