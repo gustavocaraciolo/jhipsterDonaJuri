@@ -89,7 +89,7 @@ public class UserResource {
      */
     @PostMapping("/users")
     @Timed
-    @Secured(AuthoritiesConstants.ADMIN)
+    @Secured({AuthoritiesConstants.ADMIN, AuthoritiesConstants.COORDENADOR, AuthoritiesConstants.ADVOGADO})
     public ResponseEntity<User> createUser(@Valid @RequestBody ManagedUserVM managedUserVM) throws URISyntaxException {
         log.debug("REST request to save User : {}", managedUserVM);
 
@@ -158,6 +158,7 @@ public class UserResource {
      */
     @GetMapping("/users/coordenador")
     @Timed
+    @Secured({AuthoritiesConstants.ADMIN, AuthoritiesConstants.COORDENADOR})
     public ResponseEntity<List<UserDTO>> getAllUsersByCoordenador(@ApiParam Pageable pageable) {
         final Page<UserDTO> page = userService.getAllManagedUsersByAuthority(pageable, AuthoritiesConstants.COORDENADOR);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/users/coordenador");
@@ -172,6 +173,7 @@ public class UserResource {
      */
     @GetMapping("/users/cliente")
     @Timed
+    @Secured({AuthoritiesConstants.ADMIN})
     public ResponseEntity<List<UserDTO>> getAllUsersByCliente(@ApiParam Pageable pageable) {
         final Page<UserDTO> page = userService.getAllManagedUsersByAuthority(pageable, AuthoritiesConstants.CLIENTE);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/users/cliente");
@@ -186,6 +188,7 @@ public class UserResource {
      */
     @GetMapping("/users/advogado")
     @Timed
+    @Secured({AuthoritiesConstants.ADMIN, AuthoritiesConstants.COORDENADOR, AuthoritiesConstants.ADVOGADO})
     public ResponseEntity<List<UserDTO>> getAllUsersByAdvogado(@ApiParam Pageable pageable) {
         final Page<UserDTO> page = userService.getAllManagedUsersByAuthority(pageable, AuthoritiesConstants.ADVOGADO);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/users/advogado");
