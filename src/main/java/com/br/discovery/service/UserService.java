@@ -254,6 +254,11 @@ public class UserService {
         return userRepository.findOneWithAuthoritiesByLogin(SecurityUtils.getCurrentUserLogin()).orElse(null);
     }
 
+    @Transactional(readOnly = true)
+    public Page<UserDTO> getAllManagedUsersByAuthority(Pageable pageable, String authority) {
+        return userRepository.findAllByAuthoritiesEquals(pageable, authorityRepository.findOne(authority)).map(UserDTO::new);
+    }
+
     /**
      * Not activated users should be automatically deleted after 3 days.
      * <p>

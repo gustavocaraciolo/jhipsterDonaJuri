@@ -151,6 +151,48 @@ public class UserResource {
     }
 
     /**
+     * GET /users/role : get all users by role equals COORDENADOR
+     *
+     * @param pageable the pagination information
+     * @return the ResponseEntity with status 200 (OK) and with body all users
+     */
+    @GetMapping("/users/coordenador")
+    @Timed
+    public ResponseEntity<List<UserDTO>> getAllUsersByCoordenador(@ApiParam Pageable pageable) {
+        final Page<UserDTO> page = userService.getAllManagedUsersByAuthority(pageable, AuthoritiesConstants.COORDENADOR);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/users/coordenador");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
+    /**
+     * GET /users/role : get all users by role equals CLIENTE
+     *
+     * @param pageable the pagination information
+     * @return the ResponseEntity with status 200 (OK) and with body all users
+     */
+    @GetMapping("/users/cliente")
+    @Timed
+    public ResponseEntity<List<UserDTO>> getAllUsersByCliente(@ApiParam Pageable pageable) {
+        final Page<UserDTO> page = userService.getAllManagedUsersByAuthority(pageable, AuthoritiesConstants.CLIENTE);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/users/cliente");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
+    /**
+     * GET /users/role : get all users by role equals ADVOGADO
+     *
+     * @param pageable the pagination information
+     * @return the ResponseEntity with status 200 (OK) and with body all users
+     */
+    @GetMapping("/users/advogado")
+    @Timed
+    public ResponseEntity<List<UserDTO>> getAllUsersByAdvogado(@ApiParam Pageable pageable) {
+        final Page<UserDTO> page = userService.getAllManagedUsersByAuthority(pageable, AuthoritiesConstants.ADVOGADO);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/users/advogado");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
+    /**
      * @return a string list of the all of the roles
      */
     @GetMapping("/users/authorities")
