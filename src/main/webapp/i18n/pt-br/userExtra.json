@@ -15,9 +15,9 @@
             "detail": {
                 "title": "User Extra"
             },
+            "escritorio": "Escritorio",
             "user": "User",
             "processoAdvogadoCorrente": "Processo Advogado Corrente",
-            "escritorio": "Escritorio",
             "processoCliente": "Processo Cliente",
             "processoAdvogado": "Processo Advogado"
         }

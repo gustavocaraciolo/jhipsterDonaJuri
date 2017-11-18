@@ -8,15 +8,16 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity UserExtra and its DTO UserExtraDTO.
  */
-@Mapper(componentModel = "spring", uses = {UserMapper.class})
+@Mapper(componentModel = "spring", uses = {EscritorioMapper.class, UserMapper.class})
 public interface UserExtraMapper extends EntityMapper<UserExtraDTO, UserExtra> {
 
+    @Mapping(source = "escritorio.id", target = "escritorioId")
     @Mapping(source = "user.id", target = "userId")
     UserExtraDTO toDto(UserExtra userExtra); 
 
+    @Mapping(source = "escritorioId", target = "escritorio")
     @Mapping(source = "userId", target = "user")
     @Mapping(target = "processoAdvogadoCorrente", ignore = true)
-    @Mapping(target = "escritorio", ignore = true)
     @Mapping(target = "processoClientes", ignore = true)
     @Mapping(target = "processoAdvogados", ignore = true)
     UserExtra toEntity(UserExtraDTO userExtraDTO);

@@ -21,8 +21,6 @@ public class EscritorioDTO implements Serializable {
 
     private String email;
 
-    private Long userExtraId;
-
     public Long getId() {
         return id;
     }
@@ -53,14 +51,6 @@ public class EscritorioDTO implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public Long getUserExtraId() {
-        return userExtraId;
-    }
-
-    public void setUserExtraId(Long userExtraId) {
-        this.userExtraId = userExtraId;
     }
 
     @Override

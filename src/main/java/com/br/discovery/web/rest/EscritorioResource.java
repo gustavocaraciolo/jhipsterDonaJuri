@@ -23,6 +23,7 @@ import java.net.URISyntaxException;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.StreamSupport;
 
 /**
  * REST controller for managing Escritorio.
@@ -87,11 +88,17 @@ public class EscritorioResource {
      * GET  /escritorios : get all the escritorios.
      *
      * @param pageable the pagination information
+     * @param filter the filter of the request
      * @return the ResponseEntity with status 200 (OK) and the list of escritorios in body
      */
     @GetMapping("/escritorios")
     @Timed
-    public ResponseEntity<List<EscritorioDTO>> getAllEscritorios(@ApiParam Pageable pageable) {
+    public ResponseEntity<List<EscritorioDTO>> getAllEscritorios(@ApiParam Pageable pageable, @RequestParam(required = false) String filter) {
+        if ("userextra-is-null".equals(filter)) {
+            log.debug("REST request to get all Escritorios where userExtra is null");
+            return new ResponseEntity<>(escritorioService.findAllWhereUserExtraIsNull(),
+                    HttpStatus.OK);
+        }
         log.debug("REST request to get a page of Escritorios");
         Page<EscritorioDTO> page = escritorioService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/escritorios");

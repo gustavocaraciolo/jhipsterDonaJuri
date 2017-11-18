@@ -3,6 +3,7 @@ package com.br.discovery.web.rest;
 import com.br.discovery.DiscoveryApp;
 
 import com.br.discovery.domain.UserExtra;
+import com.br.discovery.domain.Escritorio;
 import com.br.discovery.domain.User;
 import com.br.discovery.repository.UserExtraRepository;
 import com.br.discovery.service.UserExtraService;
@@ -86,6 +87,11 @@ public class UserExtraResourceIntTest {
      */
     public static UserExtra createEntity(EntityManager em) {
         UserExtra userExtra = new UserExtra();
+        // Add required entity
+        Escritorio escritorio = EscritorioResourceIntTest.createEntity(em);
+        em.persist(escritorio);
+        em.flush();
+        userExtra.setEscritorio(escritorio);
         // Add required entity
         User user = UserResourceIntTest.createEntity(em);
         em.persist(user);

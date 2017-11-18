@@ -20,7 +20,6 @@
             <th jhiSortBy="nome"><span jhiTranslate="discoveryApp.escritorio.nome">Nome</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="telefone"><span jhiTranslate="discoveryApp.escritorio.telefone">Telefone</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="email"><span jhiTranslate="discoveryApp.escritorio.email">Email</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="userExtraId"><span jhiTranslate="discoveryApp.escritorio.userExtra">User Extra</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -30,11 +29,6 @@
                 <td>{{escritorio.nome}}</td>
                 <td>{{escritorio.telefone}}</td>
                 <td>{{escritorio.email}}</td>
-                <td>
-                    <div *ngIf="escritorio.userExtraId">
-                        <a [routerLink]="['../user-extra', escritorio.userExtraId  ]" >{{escritorio.userExtraId}}</a>
-                    </div>
-                </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

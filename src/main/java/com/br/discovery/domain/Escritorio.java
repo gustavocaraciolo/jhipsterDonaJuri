@@ -1,5 +1,6 @@
 package com.br.discovery.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -32,9 +33,8 @@ public class Escritorio implements Serializable {
     @Column(name = "email")
     private String email;
 
-    @OneToOne(optional = false)
-    @NotNull
-    @JoinColumn(unique = true)
+    @OneToOne(mappedBy = "escritorio")
+    @JsonIgnore
     private UserExtra userExtra;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

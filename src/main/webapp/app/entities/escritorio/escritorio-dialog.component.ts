@@ -34,19 +34,8 @@ export class EscritorioDialogComponent implements OnInit {
 
     ngOnInit() {
         this.isSaving = false;
-        this.userExtraService
-            .query({filter: 'escritorio-is-null'})
-            .subscribe((res: ResponseWrapper) => {
-                if (!this.escritorio.userExtraId) {
-                    this.userextras = res.json;
-                } else {
-                    this.userExtraService
-                        .find(this.escritorio.userExtraId)
-                        .subscribe((subRes: UserExtra) => {
-                            this.userextras = [subRes].concat(res.json);
-                        }, (subRes: ResponseWrapper) => this.onError(subRes.json));
-                }
-            }, (res: ResponseWrapper) => this.onError(res.json));
+        this.userExtraService.query()
+            .subscribe((res: ResponseWrapper) => { this.userextras = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
     }
 
     clear() {

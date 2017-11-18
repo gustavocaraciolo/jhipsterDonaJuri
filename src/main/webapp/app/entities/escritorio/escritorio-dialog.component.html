@@ -34,19 +34,6 @@
                 [(ngModel)]="escritorio.email"  />
         </div>
 
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="discoveryApp.escritorio.userExtra" for="field_userExtra">User Extra</label>
-            <select class="form-control" id="field_userExtra" name="userExtra" [(ngModel)]="escritorio.userExtraId" required>
-                <option *ngIf="!editForm.value.userExtra" [ngValue]="null" selected></option>
-                <option [ngValue]="userExtraOption.id" *ngFor="let userExtraOption of userextras; trackBy: trackUserExtraById">{{userExtraOption.id}}</option>
-            </select>
-        </div>
-        <div [hidden]="!(editForm.controls.userExtra?.dirty && editForm.controls.userExtra?.invalid)">
-            <small class="form-text text-danger"
-                [hidden]="!editForm.controls.userExtra?.errors?.required" jhiTranslate="entity.validation.required">
-                This field is required.
-            </small>
-        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">

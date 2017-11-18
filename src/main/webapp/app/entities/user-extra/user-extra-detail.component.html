@@ -4,6 +4,12 @@
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="discoveryApp.userExtra.escritorio">Escritorio</span></dt>
+        <dd>
+            <div *ngIf="userExtra.escritorioId">
+                <a [routerLink]="['/escritorio', userExtra.escritorioId]">{{userExtra.escritorioId}}</a>
+            </div>
+        </dd>
         <dt><span jhiTranslate="discoveryApp.userExtra.user">User</span></dt>
         <dd>
             {{userExtra.userId}}

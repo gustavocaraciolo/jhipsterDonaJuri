@@ -99,11 +99,6 @@ public class UserExtraResource {
             return new ResponseEntity<>(userExtraService.findAllWhereProcessoAdvogadoCorrenteIsNull(),
                     HttpStatus.OK);
         }
-        if ("escritorio-is-null".equals(filter)) {
-            log.debug("REST request to get all UserExtras where escritorio is null");
-            return new ResponseEntity<>(userExtraService.findAllWhereEscritorioIsNull(),
-                    HttpStatus.OK);
-        }
         log.debug("REST request to get a page of UserExtras");
         Page<UserExtraDTO> page = userExtraService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/user-extras");

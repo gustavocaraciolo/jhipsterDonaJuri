@@ -8,13 +8,12 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity Escritorio and its DTO EscritorioDTO.
  */
-@Mapper(componentModel = "spring", uses = {UserExtraMapper.class})
+@Mapper(componentModel = "spring", uses = {})
 public interface EscritorioMapper extends EntityMapper<EscritorioDTO, Escritorio> {
 
-    @Mapping(source = "userExtra.id", target = "userExtraId")
-    EscritorioDTO toDto(Escritorio escritorio); 
+    
 
-    @Mapping(source = "userExtraId", target = "userExtra")
+    @Mapping(target = "userExtra", ignore = true)
     Escritorio toEntity(EscritorioDTO escritorioDTO);
 
     default Escritorio fromId(Long id) {

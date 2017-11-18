@@ -28,15 +28,16 @@ public class UserExtra implements Serializable {
     @OneToOne(optional = false)
     @NotNull
     @JoinColumn(unique = true)
+    private Escritorio escritorio;
+
+    @OneToOne(optional = false)
+    @NotNull
+    @JoinColumn(unique = true)
     private User user;
 
     @OneToOne(mappedBy = "advogadoCorrente")
     @JsonIgnore
     private Processo processoAdvogadoCorrente;
-
-    @OneToOne(mappedBy = "userExtra")
-    @JsonIgnore
-    private Escritorio escritorio;
 
     @OneToMany(mappedBy = "cliente")
     @JsonIgnore
@@ -55,6 +56,19 @@ public class UserExtra implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Escritorio getEscritorio() {
+        return escritorio;
+    }
+
+    public UserExtra escritorio(Escritorio escritorio) {
+        this.escritorio = escritorio;
+        return this;
+    }
+
+    public void setEscritorio(Escritorio escritorio) {
+        this.escritorio = escritorio;
     }
 
     public User getUser() {
@@ -81,19 +95,6 @@ public class UserExtra implements Serializable {
 
     public void setProcessoAdvogadoCorrente(Processo processo) {
         this.processoAdvogadoCorrente = processo;
-    }
-
-    public Escritorio getEscritorio() {
-        return escritorio;
-    }
-
-    public UserExtra escritorio(Escritorio escritorio) {
-        this.escritorio = escritorio;
-        return this;
-    }
-
-    public void setEscritorio(Escritorio escritorio) {
-        this.escritorio = escritorio;
     }
 
     public Set<Processo> getProcessoClientes() {

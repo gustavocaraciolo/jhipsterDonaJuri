@@ -3,7 +3,6 @@ package com.br.discovery.web.rest;
 import com.br.discovery.DiscoveryApp;
 
 import com.br.discovery.domain.Escritorio;
-import com.br.discovery.domain.UserExtra;
 import com.br.discovery.repository.EscritorioRepository;
 import com.br.discovery.service.EscritorioService;
 import com.br.discovery.service.dto.EscritorioDTO;
@@ -98,11 +97,6 @@ public class EscritorioResourceIntTest {
             .nome(DEFAULT_NOME)
             .telefone(DEFAULT_TELEFONE)
             .email(DEFAULT_EMAIL);
-        // Add required entity
-        UserExtra userExtra = UserExtraResourceIntTest.createEntity(em);
-        em.persist(userExtra);
-        em.flush();
-        escritorio.setUserExtra(userExtra);
         return escritorio;
     }
 

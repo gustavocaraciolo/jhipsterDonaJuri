@@ -31,7 +31,7 @@ relationship ManyToOne{
 
 relationship OneToOne{
     Processo{advogadoCorrente required} to UserExtra{processoAdvogadoCorrente},
-    Escritorio{userExtra required} to UserExtra{escritorio},
+    UserExtra{escritorio required} to Escritorio{userExtra},
     UserExtra{user required} to User{userExtra}
 }
 
