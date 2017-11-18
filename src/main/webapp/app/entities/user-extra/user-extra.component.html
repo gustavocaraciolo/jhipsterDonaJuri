@@ -17,8 +17,8 @@
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="escritorioId"><span jhiTranslate="discoveryApp.userExtra.escritorio">Escritorio</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="userId"><span jhiTranslate="discoveryApp.userExtra.user">User</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="escritorioId"><span jhiTranslate="discoveryApp.userExtra.escritorio">Escritorio</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -26,12 +26,12 @@
             <tr *ngFor="let userExtra of userExtras ;trackBy: trackId">
                 <td><a [routerLink]="['../user-extra', userExtra.id ]">{{userExtra.id}}</a></td>
                 <td>
+                    {{userExtra.userId}}
+                </td>
+                <td>
                     <div *ngIf="userExtra.escritorioId">
                         <a [routerLink]="['../escritorio', userExtra.escritorioId  ]" >{{userExtra.escritorioId}}</a>
                     </div>
-                </td>
-                <td>
-                    {{userExtra.userId}}
                 </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">

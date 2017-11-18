@@ -12,10 +12,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 /**
  * Service Implementation for managing Escritorio.
@@ -61,21 +57,6 @@ public class EscritorioServiceImpl implements EscritorioService{
         log.debug("Request to get all Escritorios");
         return escritorioRepository.findAll(pageable)
             .map(escritorioMapper::toDto);
-    }
-
-
-    /**
-     *  get all the escritorios where UserExtra is null.
-     *  @return the list of entities
-     */
-    @Transactional(readOnly = true) 
-    public List<EscritorioDTO> findAllWhereUserExtraIsNull() {
-        log.debug("Request to get all escritorios where UserExtra is null");
-        return StreamSupport
-            .stream(escritorioRepository.findAll().spliterator(), false)
-            .filter(escritorio -> escritorio.getUserExtra() == null)
-            .map(escritorioMapper::toDto)
-            .collect(Collectors.toCollection(LinkedList::new));
     }
 
     /**

@@ -9,8 +9,8 @@ import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { UserExtra } from './user-extra.model';
 import { UserExtraPopupService } from './user-extra-popup.service';
 import { UserExtraService } from './user-extra.service';
-import { Escritorio, EscritorioService } from '../escritorio';
 import { User, UserService } from '../../shared';
+import { Escritorio, EscritorioService } from '../escritorio';
 import { Processo, ProcessoService } from '../processo';
 import { ResponseWrapper } from '../../shared';
 
@@ -23,9 +23,9 @@ export class UserExtraDialogComponent implements OnInit {
     userExtra: UserExtra;
     isSaving: boolean;
 
-    escritorios: Escritorio[];
-
     users: User[];
+
+    escritorios: Escritorio[];
 
     processos: Processo[];
 
@@ -33,8 +33,8 @@ export class UserExtraDialogComponent implements OnInit {
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
         private userExtraService: UserExtraService,
-        private escritorioService: EscritorioService,
         private userService: UserService,
+        private escritorioService: EscritorioService,
         private processoService: ProcessoService,
         private eventManager: JhiEventManager
     ) {
@@ -42,21 +42,10 @@ export class UserExtraDialogComponent implements OnInit {
 
     ngOnInit() {
         this.isSaving = false;
-        this.escritorioService
-            .query({filter: 'userextra-is-null'})
-            .subscribe((res: ResponseWrapper) => {
-                if (!this.userExtra.escritorioId) {
-                    this.escritorios = res.json;
-                } else {
-                    this.escritorioService
-                        .find(this.userExtra.escritorioId)
-                        .subscribe((subRes: Escritorio) => {
-                            this.escritorios = [subRes].concat(res.json);
-                        }, (subRes: ResponseWrapper) => this.onError(subRes.json));
-                }
-            }, (res: ResponseWrapper) => this.onError(res.json));
         this.userService.query()
             .subscribe((res: ResponseWrapper) => { this.users = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
+        this.escritorioService.query()
+            .subscribe((res: ResponseWrapper) => { this.escritorios = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
         this.processoService.query()
             .subscribe((res: ResponseWrapper) => { this.processos = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
     }
@@ -95,11 +84,11 @@ export class UserExtraDialogComponent implements OnInit {
         this.jhiAlertService.error(error.message, null, null);
     }
 
-    trackEscritorioById(index: number, item: Escritorio) {
+    trackUserById(index: number, item: User) {
         return item.id;
     }
 
-    trackUserById(index: number, item: User) {
+    trackEscritorioById(index: number, item: Escritorio) {
         return item.id;
     }
 

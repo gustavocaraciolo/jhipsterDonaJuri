@@ -48,6 +48,7 @@ public class CacheConfiguration {
             cm.createCache(com.br.discovery.domain.UserExtra.class.getName() + ".processoAdvogados", jcacheConfiguration);
             cm.createCache(com.br.discovery.domain.Processo.class.getName(), jcacheConfiguration);
             cm.createCache(com.br.discovery.domain.Processo.class.getName() + ".advogados", jcacheConfiguration);
+            cm.createCache(com.br.discovery.domain.Escritorio.class.getName() + ".userExtras", jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

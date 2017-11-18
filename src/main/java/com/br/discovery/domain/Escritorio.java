@@ -7,6 +7,8 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -33,9 +35,10 @@ public class Escritorio implements Serializable {
     @Column(name = "email")
     private String email;
 
-    @OneToOne(mappedBy = "escritorio")
+    @OneToMany(mappedBy = "escritorio")
     @JsonIgnore
-    private UserExtra userExtra;
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<UserExtra> userExtras = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -85,17 +88,29 @@ public class Escritorio implements Serializable {
         this.email = email;
     }
 
-    public UserExtra getUserExtra() {
-        return userExtra;
+    public Set<UserExtra> getUserExtras() {
+        return userExtras;
     }
 
-    /*public Escritorio userExtra(UserExtra userExtra) {
-        this.userExtra = userExtra;
+    public Escritorio userExtras(Set<UserExtra> userExtras) {
+        this.userExtras = userExtras;
         return this;
-    }*/
+    }
 
-    public void setUserExtra(UserExtra userExtra) {
-        this.userExtra = userExtra;
+    public Escritorio addUserExtra(UserExtra userExtra) {
+        this.userExtras.add(userExtra);
+        userExtra.setEscritorio(this);
+        return this;
+    }
+
+    public Escritorio removeUserExtra(UserExtra userExtra) {
+        this.userExtras.remove(userExtra);
+        userExtra.setEscritorio(null);
+        return this;
+    }
+
+    public void setUserExtras(Set<UserExtra> userExtras) {
+        this.userExtras = userExtras;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

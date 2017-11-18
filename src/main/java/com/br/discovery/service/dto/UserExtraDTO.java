@@ -14,9 +14,9 @@ public class UserExtraDTO implements Serializable {
 
     private Long id;
 
-    private Long escritorioId;
-
     private Long userId;
+
+    private Long escritorioId;
 
     public Long getId() {
         return id;
@@ -26,20 +26,20 @@ public class UserExtraDTO implements Serializable {
         this.id = id;
     }
 
-    public Long getEscritorioId() {
-        return escritorioId;
-    }
-
-    public void setEscritorioId(Long escritorioId) {
-        this.escritorioId = escritorioId;
-    }
-
     public Long getUserId() {
         return userId;
     }
 
     public void setUserId(Long userId) {
         this.userId = userId;
+    }
+
+    public Long getEscritorioId() {
+        return escritorioId;
+    }
+
+    public void setEscritorioId(Long escritorioId) {
+        this.escritorioId = escritorioId;
     }
 
     @Override

@@ -6,7 +6,7 @@ export class Escritorio implements BaseEntity {
         public nome?: string,
         public telefone?: string,
         public email?: string,
-        public userExtraId?: number,
+        public userExtras?: BaseEntity[],
     ) {
     }
 }

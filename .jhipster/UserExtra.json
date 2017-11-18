@@ -4,20 +4,18 @@
         {
             "relationshipType": "one-to-one",
             "relationshipValidateRules": "required",
-            "relationshipName": "escritorio",
-            "otherEntityName": "escritorio",
-            "otherEntityField": "id",
-            "ownerSide": true,
-            "otherEntityRelationshipName": "userExtra"
-        },
-        {
-            "relationshipType": "one-to-one",
-            "relationshipValidateRules": "required",
             "relationshipName": "user",
             "otherEntityName": "user",
             "otherEntityField": "id",
             "ownerSide": true,
             "otherEntityRelationshipName": "userExtra"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": "required",
+            "relationshipName": "escritorio",
+            "otherEntityName": "escritorio",
+            "otherEntityField": "id"
         },
         {
             "relationshipType": "one-to-one",

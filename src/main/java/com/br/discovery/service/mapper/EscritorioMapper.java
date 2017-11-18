@@ -13,7 +13,7 @@ public interface EscritorioMapper extends EntityMapper<EscritorioDTO, Escritorio
 
     
 
-    @Mapping(target = "userExtra", ignore = true)
+    @Mapping(target = "userExtras", ignore = true)
     Escritorio toEntity(EscritorioDTO escritorioDTO);
 
     default Escritorio fromId(Long id) {

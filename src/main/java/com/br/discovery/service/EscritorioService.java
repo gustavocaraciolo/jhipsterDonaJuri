@@ -3,7 +3,6 @@ package com.br.discovery.service;
 import com.br.discovery.service.dto.EscritorioDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import java.util.List;
 
 /**
  * Service Interface for managing Escritorio.
@@ -25,12 +24,6 @@ public interface EscritorioService {
      *  @return the list of entities
      */
     Page<EscritorioDTO> findAll(Pageable pageable);
-    /**
-     *  Get all the EscritorioDTO where UserExtra is null.
-     *
-     *  @return the list of entities
-     */
-    List<EscritorioDTO> findAllWhereUserExtraIsNull();
 
     /**
      *  Get the "id" escritorio.
