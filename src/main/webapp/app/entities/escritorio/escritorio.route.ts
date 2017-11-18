@@ -33,7 +33,7 @@ export const escritorioRoute: Routes = [
             'pagingParams': EscritorioResolvePagingParams
         },
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'discoveryApp.escritorio.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -41,7 +41,7 @@ export const escritorioRoute: Routes = [
         path: 'escritorio/:id',
         component: EscritorioDetailComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'discoveryApp.escritorio.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -53,7 +53,7 @@ export const escritorioPopupRoute: Routes = [
         path: 'escritorio-new',
         component: EscritorioPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'discoveryApp.escritorio.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -63,7 +63,7 @@ export const escritorioPopupRoute: Routes = [
         path: 'escritorio/:id/edit',
         component: EscritorioPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'discoveryApp.escritorio.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -73,7 +73,7 @@ export const escritorioPopupRoute: Routes = [
         path: 'escritorio/:id/delete',
         component: EscritorioDeletePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'discoveryApp.escritorio.home.title'
         },
         canActivate: [UserRouteAccessService],
