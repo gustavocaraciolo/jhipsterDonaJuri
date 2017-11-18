@@ -66,15 +66,9 @@
         </div>
         <div class="form-group">
             <label jhiTranslate="discoveryApp.processo.advogado" for="field_advogado">Advogado</label>
-            <select class="form-control" id="field_advogado" multiple name="advogado" [(ngModel)]="processo.advogados" required>
+            <select class="form-control" id="field_advogado" multiple name="advogado" [(ngModel)]="processo.advogados">
                 <option [ngValue]="getSelected(processo.advogados, userExtraOption)" *ngFor="let userExtraOption of userextras; trackBy: trackUserExtraById">{{userExtraOption.id}}</option>
             </select>
-        </div>
-        <div [hidden]="!(editForm.controls.advogado?.dirty && editForm.controls.advogado?.invalid)">
-            <small class="form-text text-danger"
-                [hidden]="!editForm.controls.advogado?.errors?.required" jhiTranslate="entity.validation.required">
-                This field is required.
-            </small>
         </div>
     </div>
     <div class="modal-footer">

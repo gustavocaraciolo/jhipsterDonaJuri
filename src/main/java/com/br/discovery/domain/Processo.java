@@ -48,7 +48,6 @@ public class Processo implements Serializable {
 
     @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    @NotNull
     @JoinTable(name = "processo_advogado",
                joinColumns = @JoinColumn(name="processos_id", referencedColumnName="id"),
                inverseJoinColumns = @JoinColumn(name="advogados_id", referencedColumnName="id"))

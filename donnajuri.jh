@@ -22,7 +22,7 @@ enum Status {
 }
 
 relationship ManyToMany{
-    Processo{advogado required} to UserExtra{processoAdvogado}
+    Processo{advogado} to UserExtra{processoAdvogado}
 }
 
 relationship ManyToOne{

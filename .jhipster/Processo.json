@@ -19,7 +19,6 @@
         },
         {
             "relationshipType": "many-to-many",
-            "relationshipValidateRules": "required",
             "otherEntityRelationshipName": "processoAdvogado",
             "relationshipName": "advogado",
             "otherEntityName": "userExtra",

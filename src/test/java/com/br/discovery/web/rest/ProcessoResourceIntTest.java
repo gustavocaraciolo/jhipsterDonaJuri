@@ -5,7 +5,6 @@ import com.br.discovery.DiscoveryApp;
 import com.br.discovery.domain.Processo;
 import com.br.discovery.domain.UserExtra;
 import com.br.discovery.domain.UserExtra;
-import com.br.discovery.domain.UserExtra;
 import com.br.discovery.repository.ProcessoRepository;
 import com.br.discovery.service.ProcessoService;
 import com.br.discovery.service.dto.ProcessoDTO;
@@ -111,11 +110,6 @@ public class ProcessoResourceIntTest {
         em.persist(cliente);
         em.flush();
         processo.setCliente(cliente);
-        // Add required entity
-        UserExtra advogado = UserExtraResourceIntTest.createEntity(em);
-        em.persist(advogado);
-        em.flush();
-        processo.getAdvogados().add(advogado);
         return processo;
     }
 
