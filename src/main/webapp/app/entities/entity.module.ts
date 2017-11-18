@@ -3,6 +3,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { DiscoveryEscritorioModule } from './escritorio/escritorio.module';
 import { DiscoveryUserExtraModule } from './user-extra/user-extra.module';
 import { DiscoveryProcessoModule } from './processo/processo.module';
+import { DiscoveryPendenciaModule } from './pendencia/pendencia.module';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
@@ -10,6 +11,7 @@ import { DiscoveryProcessoModule } from './processo/processo.module';
         DiscoveryEscritorioModule,
         DiscoveryUserExtraModule,
         DiscoveryProcessoModule,
+        DiscoveryPendenciaModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],

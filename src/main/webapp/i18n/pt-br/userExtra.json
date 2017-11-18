@@ -19,7 +19,8 @@
             "escritorio": "Escritorio",
             "processoAdvogadoCorrente": "Processo Advogado Corrente",
             "processoCliente": "Processo Cliente",
-            "processoAdvogado": "Processo Advogado"
+            "processoAdvogado": "Processo Advogado",
+            "pendenciaAdvogado": "Pendencia Advogado"
         }
     }
 }

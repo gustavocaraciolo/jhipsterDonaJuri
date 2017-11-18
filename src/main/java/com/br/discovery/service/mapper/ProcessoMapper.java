@@ -17,6 +17,7 @@ public interface ProcessoMapper extends EntityMapper<ProcessoDTO, Processo> {
 
     @Mapping(source = "advogadoCorrenteId", target = "advogadoCorrente")
     @Mapping(source = "clienteId", target = "cliente")
+    @Mapping(target = "pendencias", ignore = true)
     Processo toEntity(ProcessoDTO processoDTO);
 
     default Processo fromId(Long id) {

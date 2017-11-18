@@ -36,6 +36,13 @@
             "otherEntityName": "processo",
             "ownerSide": false,
             "otherEntityRelationshipName": "advogado"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "pendenciaAdvogado",
+            "otherEntityName": "pendencia",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "advogado"
         }
     ],
     "fields": [],

@@ -24,6 +24,12 @@
             "otherEntityName": "userExtra",
             "otherEntityField": "id",
             "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "pendencia",
+            "otherEntityName": "pendencia",
+            "otherEntityRelationshipName": "processo"
         }
     ],
     "fields": [

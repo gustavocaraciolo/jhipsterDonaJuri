@@ -47,7 +47,12 @@
                             <span jhiTranslate="global.menu.entities.processo">Processo</span>
                         </a>
                     </li>
-
+                    <li *jhiHasAnyAuthority="['ROLE_ADMIN','ROLE_COORDENADOR', 'ROLE_ADVOGADO']">
+                        <a class="dropdown-item" routerLink="pendencia" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <i class="fa fa-fw fa-asterisk" aria-hidden="true"></i>
+                            <span jhiTranslate="global.menu.entities.pendencia">Pendencia</span>
+                        </a>
+                    </li>
                 </ul>
             </li>
             <li *jhiHasAnyAuthority="'ROLE_ADMIN'" ngbDropdown class="nav-item dropdown pointer" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">

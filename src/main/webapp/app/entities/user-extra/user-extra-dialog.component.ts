@@ -12,6 +12,7 @@ import { UserExtraService } from './user-extra.service';
 import { User, UserService } from '../../shared';
 import { Escritorio, EscritorioService } from '../escritorio';
 import { Processo, ProcessoService } from '../processo';
+import { Pendencia, PendenciaService } from '../pendencia';
 import { ResponseWrapper } from '../../shared';
 
 @Component({
@@ -29,6 +30,8 @@ export class UserExtraDialogComponent implements OnInit {
 
     processos: Processo[];
 
+    pendencias: Pendencia[];
+
     constructor(
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
@@ -36,6 +39,7 @@ export class UserExtraDialogComponent implements OnInit {
         private userService: UserService,
         private escritorioService: EscritorioService,
         private processoService: ProcessoService,
+        private pendenciaService: PendenciaService,
         private eventManager: JhiEventManager
     ) {
     }
@@ -48,6 +52,8 @@ export class UserExtraDialogComponent implements OnInit {
             .subscribe((res: ResponseWrapper) => { this.escritorios = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
         this.processoService.query()
             .subscribe((res: ResponseWrapper) => { this.processos = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
+        this.pendenciaService.query()
+            .subscribe((res: ResponseWrapper) => { this.pendencias = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
     }
 
     clear() {
@@ -93,6 +99,10 @@ export class UserExtraDialogComponent implements OnInit {
     }
 
     trackProcessoById(index: number, item: Processo) {
+        return item.id;
+    }
+
+    trackPendenciaById(index: number, item: Pendencia) {
         return item.id;
     }
 

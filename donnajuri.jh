@@ -14,6 +14,14 @@ entity Processo{
     parte_adversa String
 }
 
+entity Pendencia {
+    providencia String,
+    observacoes TextBlob,
+    dataInicial ZonedDateTime,
+    dataFinal ZonedDateTime,
+    status Status
+}
+
 enum Status {
     PENDENTE,
     PERDIDO,
@@ -22,12 +30,14 @@ enum Status {
 }
 
 relationship ManyToMany{
-    Processo{advogado} to UserExtra{processoAdvogado}
+    Processo{advogado} to UserExtra{processoAdvogado},
+    Pendencia{advogado} to UserExtra{pendenciaAdvogado}
 }
 
 relationship ManyToOne{
     Processo{cliente required} to UserExtra{processoCliente},
-    UserExtra{escritorio required} to Escritorio{userExtra}
+    UserExtra{escritorio required} to Escritorio{userExtra},
+    Pendencia{processo required} to Processo{pendencia}
 }
 
 relationship OneToOne{

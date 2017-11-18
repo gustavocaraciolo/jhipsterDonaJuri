@@ -20,7 +20,8 @@
             "parteadversa": "Parteadversa",
             "advogadoCorrente": "Advogado Corrente",
             "cliente": "Cliente",
-            "advogado": "Advogado"
+            "advogado": "Advogado",
+            "pendencia": "Pendencia"
         }
     }
 }

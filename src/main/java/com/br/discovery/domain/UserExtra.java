@@ -48,6 +48,11 @@ public class UserExtra implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Processo> processoAdvogados = new HashSet<>();
 
+    @ManyToMany(mappedBy = "advogados")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Pendencia> pendenciaAdvogados = new HashSet<>();
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -144,6 +149,31 @@ public class UserExtra implements Serializable {
 
     public void setProcessoAdvogados(Set<Processo> processos) {
         this.processoAdvogados = processos;
+    }
+
+    public Set<Pendencia> getPendenciaAdvogados() {
+        return pendenciaAdvogados;
+    }
+
+    public UserExtra pendenciaAdvogados(Set<Pendencia> pendencias) {
+        this.pendenciaAdvogados = pendencias;
+        return this;
+    }
+
+    public UserExtra addPendenciaAdvogado(Pendencia pendencia) {
+        this.pendenciaAdvogados.add(pendencia);
+        pendencia.getAdvogados().add(this);
+        return this;
+    }
+
+    public UserExtra removePendenciaAdvogado(Pendencia pendencia) {
+        this.pendenciaAdvogados.remove(pendencia);
+        pendencia.getAdvogados().remove(this);
+        return this;
+    }
+
+    public void setPendenciaAdvogados(Set<Pendencia> pendencias) {
+        this.pendenciaAdvogados = pendencias;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

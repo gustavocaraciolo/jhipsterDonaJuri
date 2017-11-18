@@ -16,6 +16,7 @@ export class Processo implements BaseEntity {
         public advogadoCorrenteId?: number,
         public clienteId?: number,
         public advogados?: BaseEntity[],
+        public pendencias?: BaseEntity[],
     ) {
     }
 }

@@ -20,6 +20,7 @@ public interface UserExtraMapper extends EntityMapper<UserExtraDTO, UserExtra> {
     @Mapping(target = "processoAdvogadoCorrente", ignore = true)
     @Mapping(target = "processoClientes", ignore = true)
     @Mapping(target = "processoAdvogados", ignore = true)
+    @Mapping(target = "pendenciaAdvogados", ignore = true)
     UserExtra toEntity(UserExtraDTO userExtraDTO);
 
     default UserExtra fromId(Long id) {

@@ -1,5 +1,6 @@
 package com.br.discovery.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -52,6 +53,11 @@ public class Processo implements Serializable {
                joinColumns = @JoinColumn(name="processos_id", referencedColumnName="id"),
                inverseJoinColumns = @JoinColumn(name="advogados_id", referencedColumnName="id"))
     private Set<UserExtra> advogados = new HashSet<>();
+
+    @OneToMany(mappedBy = "processo")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Pendencia> pendencias = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -148,9 +154,34 @@ public class Processo implements Serializable {
         return this;
     }
 
-    /*public void setAdvogados(Set<UserExtra> userExtras) {
+    public void setAdvogados(Set<UserExtra> userExtras) {
         this.advogados = userExtras;
-    }*/
+    }
+
+    public Set<Pendencia> getPendencias() {
+        return pendencias;
+    }
+
+    public Processo pendencias(Set<Pendencia> pendencias) {
+        this.pendencias = pendencias;
+        return this;
+    }
+
+    public Processo addPendencia(Pendencia pendencia) {
+        this.pendencias.add(pendencia);
+        pendencia.setProcesso(this);
+        return this;
+    }
+
+    public Processo removePendencia(Pendencia pendencia) {
+        this.pendencias.remove(pendencia);
+        pendencia.setProcesso(null);
+        return this;
+    }
+
+    public void setPendencias(Set<Pendencia> pendencias) {
+        this.pendencias = pendencias;
+    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override

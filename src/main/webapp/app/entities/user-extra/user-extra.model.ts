@@ -8,6 +8,7 @@ export class UserExtra implements BaseEntity {
         public processoAdvogadoCorrenteId?: number,
         public processoClientes?: BaseEntity[],
         public processoAdvogados?: BaseEntity[],
+        public pendenciaAdvogados?: BaseEntity[],
     ) {
     }
 }
