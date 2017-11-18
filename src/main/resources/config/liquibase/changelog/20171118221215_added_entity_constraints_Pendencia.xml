@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Pendencia.
+    -->
+    <changeSet id="20171118221215-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="processo_id"
+                                 baseTableName="pendencia"
+                                 constraintName="fk_pendencia_processo_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="processo"/>
+
+        <addForeignKeyConstraint baseColumnNames="pendencias_id"
+                                 baseTableName="pendencia_advogado"
+                                 constraintName="fk_pendencia_advogado_pendencias_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="pendencia"/>
+        <addForeignKeyConstraint baseColumnNames="advogados_id"
+                                 baseTableName="pendencia_advogado"
+                                 constraintName="fk_pendencia_advogado_advogados_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="user_extra"/>
+        
+    </changeSet>
+</databaseChangeLog>

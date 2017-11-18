@@ -1,0 +1,50 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": "required",
+            "relationshipName": "processo",
+            "otherEntityName": "processo",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "pendenciaAdvogado",
+            "relationshipName": "advogado",
+            "otherEntityName": "userExtra",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "providencia",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "observacoes",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
+        },
+        {
+            "fieldName": "dataInicial",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "dataFinal",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "Status",
+            "fieldValues": "PENDENTE,PERDIDO,REALIZADO,REALIZANDO"
+        }
+    ],
+    "changelogDate": "20171118221215",
+    "entityTableName": "pendencia",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false
+}

@@ -1,0 +1,78 @@
+<div>
+    <h2>
+        <span jhiTranslate="discoveryApp.pendencia.home.title">Pendencias</span>
+        <button class="btn btn-primary float-right jh-create-entity create-pendencia" [routerLink]="['/', { outlets: { popup: ['pendencia-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="discoveryApp.pendencia.home.createLabel">
+            Create new Pendencia
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="pendencias">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="providencia"><span jhiTranslate="discoveryApp.pendencia.providencia">Providencia</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="observacoes"><span jhiTranslate="discoveryApp.pendencia.observacoes">Observacoes</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dataInicial"><span jhiTranslate="discoveryApp.pendencia.dataInicial">Data Inicial</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dataFinal"><span jhiTranslate="discoveryApp.pendencia.dataFinal">Data Final</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="status"><span jhiTranslate="discoveryApp.pendencia.status">Status</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="processoId"><span jhiTranslate="discoveryApp.pendencia.processo">Processo</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let pendencia of pendencias ;trackBy: trackId">
+                <td><a [routerLink]="['../pendencia', pendencia.id ]">{{pendencia.id}}</a></td>
+                <td>{{pendencia.providencia}}</td>
+                <td>{{pendencia.observacoes}}</td>
+                <td>{{pendencia.dataInicial | date:'medium'}}</td>
+                <td>{{pendencia.dataFinal | date:'medium'}}</td>
+                <td jhiTranslate="{{'discoveryApp.Status.' + pendencia.status}}">{{pendencia.status}}</td>
+                <td>
+                    <div *ngIf="pendencia.processoId">
+                        <a [routerLink]="['../processo', pendencia.processoId  ]" >{{pendencia.processoId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../pendencia', pendencia.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'pendencia/'+ pendencia.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'pendencia/'+ pendencia.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+        <div *ngIf="pendencias && pendencias.length">
+            <div class="row justify-content-center">
+                <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+            </div>
+            <div class="row justify-content-center">
+                <ngb-pagination [collectionSize]="totalItems" [maxSize]="5" [pageSize]="itemsPerPage" [(page)]="page" (pageChange)="loadPage(page)"></ngb-pagination>
+            </div>
+        </div>
+</div>

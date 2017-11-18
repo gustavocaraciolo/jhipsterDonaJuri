@@ -1,0 +1,27 @@
+{
+    "discoveryApp": {
+        "pendencia" : {
+            "home": {
+                "title": "Pendencias",
+                "createLabel": "Criar novo Pendencia",
+                "createOrEditLabel": "Criar ou editar Pendencia"
+            },
+            "created": "Um novo Pendencia foi criado com o identificador {{ param }}",
+            "updated": "Um Pendencia foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Pendencia foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Pendencia {{ id }}?"
+            },
+            "detail": {
+                "title": "Pendencia"
+            },
+            "providencia": "Providencia",
+            "observacoes": "Observacoes",
+            "dataInicial": "Data Inicial",
+            "dataFinal": "Data Final",
+            "status": "Status",
+            "processo": "Processo",
+            "advogado": "Advogado"
+        }
+    }
+}

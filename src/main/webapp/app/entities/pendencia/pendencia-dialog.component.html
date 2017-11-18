@@ -1,0 +1,77 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myPendenciaLabel" jhiTranslate="discoveryApp.pendencia.home.createOrEditLabel">Create or edit a Pendencia</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!pendencia.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="pendencia.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="discoveryApp.pendencia.providencia" for="field_providencia">Providencia</label>
+            <input type="text" class="form-control" name="providencia" id="field_providencia"
+                [(ngModel)]="pendencia.providencia"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="discoveryApp.pendencia.observacoes" for="field_observacoes">Observacoes</label>
+            <textarea class="form-control" name="observacoes" id="field_observacoes"
+                [(ngModel)]="pendencia.observacoes"  ></textarea>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="discoveryApp.pendencia.dataInicial" for="field_dataInicial">Data Inicial</label>
+            <div class="d-flex">
+                <input id="field_dataInicial" type="datetime-local" class="form-control" name="dataInicial" [(ngModel)]="pendencia.dataInicial"
+                  />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="discoveryApp.pendencia.dataFinal" for="field_dataFinal">Data Final</label>
+            <div class="d-flex">
+                <input id="field_dataFinal" type="datetime-local" class="form-control" name="dataFinal" [(ngModel)]="pendencia.dataFinal"
+                  />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="discoveryApp.pendencia.status" for="field_status">Status</label>
+            <select class="form-control" name="status" [(ngModel)]="pendencia.status" id="field_status" >
+                <option value="PENDENTE">{{'discoveryApp.Status.PENDENTE' | translate}}</option>
+                <option value="PERDIDO">{{'discoveryApp.Status.PERDIDO' | translate}}</option>
+                <option value="REALIZADO">{{'discoveryApp.Status.REALIZADO' | translate}}</option>
+                <option value="REALIZANDO">{{'discoveryApp.Status.REALIZANDO' | translate}}</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="discoveryApp.pendencia.processo" for="field_processo">Processo</label>
+            <select class="form-control" id="field_processo" name="processo" [(ngModel)]="pendencia.processoId"  required>
+                <option *ngIf="!editForm.value.processo" [ngValue]="null" selected></option>
+                <option [ngValue]="processoOption.id" *ngFor="let processoOption of processos; trackBy: trackProcessoById">{{processoOption.id}}</option>
+            </select>
+        </div>
+        <div [hidden]="!(editForm.controls.processo?.dirty && editForm.controls.processo?.invalid)">
+            <small class="form-text text-danger"
+                [hidden]="!editForm.controls.processo?.errors?.required" jhiTranslate="entity.validation.required">
+                This field is required.
+            </small>
+        </div>
+        <div class="form-group">
+            <label jhiTranslate="discoveryApp.pendencia.advogado" for="field_advogado">Advogado</label>
+            <select class="form-control" id="field_advogado" multiple name="advogado" [(ngModel)]="pendencia.advogados">
+                <option [ngValue]="getSelected(pendencia.advogados, userExtraOption)" *ngFor="let userExtraOption of userextras; trackBy: trackUserExtraById">{{userExtraOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>
