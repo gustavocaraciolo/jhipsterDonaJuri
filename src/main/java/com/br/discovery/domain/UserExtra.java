@@ -27,7 +27,7 @@ public class UserExtra implements Serializable {
 
     @OneToOne(optional = false)
     @NotNull
-    @JoinColumn(unique = true)
+    @JoinColumn(unique = false)
     private Escritorio escritorio;
 
     @OneToOne(optional = false)

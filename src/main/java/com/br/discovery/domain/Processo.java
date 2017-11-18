@@ -148,9 +148,9 @@ public class Processo implements Serializable {
         return this;
     }
 
-    public void setAdvogados(Set<UserExtra> userExtras) {
+    /*public void setAdvogados(Set<UserExtra> userExtras) {
         this.advogados = userExtras;
-    }
+    }*/
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override

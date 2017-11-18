@@ -89,10 +89,10 @@ public class Escritorio implements Serializable {
         return userExtra;
     }
 
-    public Escritorio userExtra(UserExtra userExtra) {
+    /*public Escritorio userExtra(UserExtra userExtra) {
         this.userExtra = userExtra;
         return this;
-    }
+    }*/
 
     public void setUserExtra(UserExtra userExtra) {
         this.userExtra = userExtra;
