@@ -2,7 +2,9 @@ package com.br.discovery.web.rest;
 
 import com.br.discovery.DiscoveryApp;
 import com.br.discovery.domain.Authority;
+import com.br.discovery.domain.Escritorio;
 import com.br.discovery.domain.User;
+import com.br.discovery.repository.EscritorioRepository;
 import com.br.discovery.repository.UserRepository;
 import com.br.discovery.security.AuthoritiesConstants;
 import com.br.discovery.service.MailService;
@@ -75,6 +77,9 @@ public class UserResourceIntTest {
     private UserRepository userRepository;
 
     @Autowired
+    private EscritorioRepository escritorioRepository;
+
+    @Autowired
     private MailService mailService;
 
     @Autowired
@@ -140,6 +145,7 @@ public class UserResourceIntTest {
     @Transactional
     public void createUser() throws Exception {
         int databaseSizeBeforeCreate = userRepository.findAll().size();
+        Escritorio escritorio = escritorioRepository.findOne(1l);
 
         // Create the User
         Set<String> authorities = new HashSet<>();
@@ -158,7 +164,8 @@ public class UserResourceIntTest {
             null,
             null,
             null,
-            authorities);
+            authorities,
+            escritorio);
 
         restUserMockMvc.perform(post("/api/users")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -181,7 +188,7 @@ public class UserResourceIntTest {
     @Transactional
     public void createUserWithExistingId() throws Exception {
         int databaseSizeBeforeCreate = userRepository.findAll().size();
-
+        Escritorio escritorio = escritorioRepository.findOne(1l);
         Set<String> authorities = new HashSet<>();
         authorities.add(AuthoritiesConstants.ADVOGADO);
         ManagedUserVM managedUserVM = new ManagedUserVM(
@@ -198,7 +205,8 @@ public class UserResourceIntTest {
             null,
             null,
             null,
-            authorities);
+            authorities,
+            escritorio);
 
         // An entity with an existing ID cannot be created, so this API call must fail
         restUserMockMvc.perform(post("/api/users")
@@ -217,7 +225,7 @@ public class UserResourceIntTest {
         // Initialize the database
         userRepository.saveAndFlush(user);
         int databaseSizeBeforeCreate = userRepository.findAll().size();
-
+        Escritorio escritorio = escritorioRepository.findOne(1l);
         Set<String> authorities = new HashSet<>();
         authorities.add(AuthoritiesConstants.ADVOGADO);
         ManagedUserVM managedUserVM = new ManagedUserVM(
@@ -234,7 +242,8 @@ public class UserResourceIntTest {
             null,
             null,
             null,
-            authorities);
+            authorities,
+            escritorio);
 
         // Create the User
         restUserMockMvc.perform(post("/api/users")
@@ -253,7 +262,7 @@ public class UserResourceIntTest {
         // Initialize the database
         userRepository.saveAndFlush(user);
         int databaseSizeBeforeCreate = userRepository.findAll().size();
-
+        Escritorio escritorio = escritorioRepository.findOne(1l);
         Set<String> authorities = new HashSet<>();
         authorities.add(AuthoritiesConstants.ADVOGADO);
         ManagedUserVM managedUserVM = new ManagedUserVM(
@@ -270,7 +279,8 @@ public class UserResourceIntTest {
             null,
             null,
             null,
-            authorities);
+            authorities,
+            escritorio);
 
         // Create the User
         restUserMockMvc.perform(post("/api/users")
@@ -353,7 +363,7 @@ public class UserResourceIntTest {
             updatedUser.getCreatedDate(),
             updatedUser.getLastModifiedBy(),
             updatedUser.getLastModifiedDate(),
-            authorities);
+            authorities, null);
 
         restUserMockMvc.perform(put("/api/users")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -397,7 +407,7 @@ public class UserResourceIntTest {
             updatedUser.getCreatedDate(),
             updatedUser.getLastModifiedBy(),
             updatedUser.getLastModifiedDate(),
-            authorities);
+            authorities, null);
 
         restUserMockMvc.perform(put("/api/users")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -452,7 +462,7 @@ public class UserResourceIntTest {
             updatedUser.getCreatedDate(),
             updatedUser.getLastModifiedBy(),
             updatedUser.getLastModifiedDate(),
-            authorities);
+            authorities, null);
 
         restUserMockMvc.perform(put("/api/users")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -496,7 +506,7 @@ public class UserResourceIntTest {
             updatedUser.getCreatedDate(),
             updatedUser.getLastModifiedBy(),
             updatedUser.getLastModifiedDate(),
-            authorities);
+            authorities, null);
 
         restUserMockMvc.perform(put("/api/users")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)

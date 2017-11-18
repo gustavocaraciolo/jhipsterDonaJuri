@@ -1,9 +1,13 @@
 package com.br.discovery.service;
 
 import com.br.discovery.domain.Authority;
+import com.br.discovery.domain.Escritorio;
 import com.br.discovery.domain.User;
+import com.br.discovery.domain.UserExtra;
 import com.br.discovery.repository.AuthorityRepository;
 import com.br.discovery.config.Constants;
+import com.br.discovery.repository.EscritorioRepository;
+import com.br.discovery.repository.UserExtraRepository;
 import com.br.discovery.repository.UserRepository;
 import com.br.discovery.security.AuthoritiesConstants;
 import com.br.discovery.security.SecurityUtils;
@@ -39,6 +43,10 @@ public class UserService {
 
     private final UserRepository userRepository;
 
+    private final EscritorioRepository escritorioRepository;
+
+    private final UserExtraRepository userExtraRepository;
+
     private final PasswordEncoder passwordEncoder;
 
     private final SocialService socialService;
@@ -47,12 +55,15 @@ public class UserService {
 
     private final CacheManager cacheManager;
 
-    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, SocialService socialService, AuthorityRepository authorityRepository, CacheManager cacheManager) {
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, SocialService socialService, AuthorityRepository authorityRepository, CacheManager cacheManager,
+                       UserExtraRepository userExtraRepository, EscritorioRepository escritorioRepository) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.socialService = socialService;
         this.authorityRepository = authorityRepository;
         this.cacheManager = cacheManager;
+        this.userExtraRepository = userExtraRepository;
+        this.escritorioRepository = escritorioRepository;
     }
 
     public Optional<User> activateRegistration(String key) {
@@ -115,6 +126,15 @@ public class UserService {
         newUser.setAuthorities(authorities);
         userRepository.save(newUser);
         log.debug("Created Information for User: {}", newUser);
+
+        // Create and save the UserExtra entity
+        UserExtra newUserExtra = new UserExtra();
+        newUserExtra.setUser(newUser);
+        Escritorio escritorio = escritorioRepository.findOne(1l);
+        newUserExtra.setEscritorio(escritorio);
+        userExtraRepository.save(newUserExtra);
+        log.debug("Created Information for UserExtra: {}", newUserExtra);
+
         return newUser;
     }
 
