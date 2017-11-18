@@ -27,7 +27,7 @@ public class UserExtra implements Serializable {
 
     @OneToOne(optional = false)
     @NotNull
-    @MapsId
+    @JoinColumn(unique = true)
     private User user;
 
     @OneToOne(mappedBy = "advogadoCorrente")
