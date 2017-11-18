@@ -1,5 +1,6 @@
 package com.br.discovery.bootstrap;
 
+import com.br.discovery.config.Constants;
 import com.br.discovery.domain.*;
 import com.br.discovery.domain.enumeration.Status;
 import com.br.discovery.repository.*;
@@ -77,6 +78,8 @@ public class DonnaBootstrap implements CommandLineRunner {
         user.setEmail(email);
         user.setActivated(true);
         user.setAuthorities(authorities);
+        user.setLangKey(Constants.DEFAULT_LANGUAGE);
+        user.setImageUrl("http://www.jhipster.tech/images/logo/logo-jhipster2x.png");
         userRepository.save(user);
 
         // Create and save the UserExtra entity
