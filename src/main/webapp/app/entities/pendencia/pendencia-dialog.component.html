@@ -24,16 +24,22 @@
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="discoveryApp.pendencia.dataInicial" for="field_dataInicial">Data Inicial</label>
-            <div class="d-flex">
-                <input id="field_dataInicial" type="datetime-local" class="form-control" name="dataInicial" [(ngModel)]="pendencia.dataInicial"
-                  />
+            <div class="input-group">
+                <input id="field_dataInicial" type="text" class="form-control" name="dataInicial" ngbDatepicker  #dataInicialDp="ngbDatepicker" [(ngModel)]="pendencia.dataInicial"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="dataInicialDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
             </div>
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="discoveryApp.pendencia.dataFinal" for="field_dataFinal">Data Final</label>
-            <div class="d-flex">
-                <input id="field_dataFinal" type="datetime-local" class="form-control" name="dataFinal" [(ngModel)]="pendencia.dataFinal"
-                  />
+            <div class="input-group">
+                <input id="field_dataFinal" type="text" class="form-control" name="dataFinal" ngbDatepicker  #dataFinalDp="ngbDatepicker" [(ngModel)]="pendencia.dataFinal"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="dataFinalDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
             </div>
         </div>
         <div class="form-group">

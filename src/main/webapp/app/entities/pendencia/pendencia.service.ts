@@ -63,9 +63,9 @@ export class PendenciaService {
     private convertItemFromServer(json: any): Pendencia {
         const entity: Pendencia = Object.assign(new Pendencia(), json);
         entity.dataInicial = this.dateUtils
-            .convertDateTimeFromServer(json.dataInicial);
+            .convertLocalDateFromServer(json.dataInicial);
         entity.dataFinal = this.dateUtils
-            .convertDateTimeFromServer(json.dataFinal);
+            .convertLocalDateFromServer(json.dataFinal);
         return entity;
     }
 
@@ -74,10 +74,10 @@ export class PendenciaService {
      */
     private convert(pendencia: Pendencia): Pendencia {
         const copy: Pendencia = Object.assign({}, pendencia);
-
-        copy.dataInicial = this.dateUtils.toDate(pendencia.dataInicial);
-
-        copy.dataFinal = this.dateUtils.toDate(pendencia.dataFinal);
+        copy.dataInicial = this.dateUtils
+            .convertLocalDateToServer(pendencia.dataInicial);
+        copy.dataFinal = this.dateUtils
+            .convertLocalDateToServer(pendencia.dataFinal);
         return copy;
     }
 }

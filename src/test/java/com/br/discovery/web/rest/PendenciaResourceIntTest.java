@@ -26,13 +26,10 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Base64Utils;
 
 import javax.persistence.EntityManager;
-import java.time.Instant;
-import java.time.ZonedDateTime;
-import java.time.ZoneOffset;
+import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.List;
 
-import static com.br.discovery.web.rest.TestUtil.sameInstant;
 import static com.br.discovery.web.rest.TestUtil.createFormattingConversionService;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
@@ -55,11 +52,11 @@ public class PendenciaResourceIntTest {
     private static final String DEFAULT_OBSERVACOES = "AAAAAAAAAA";
     private static final String UPDATED_OBSERVACOES = "BBBBBBBBBB";
 
-    private static final ZonedDateTime DEFAULT_DATA_INICIAL = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
-    private static final ZonedDateTime UPDATED_DATA_INICIAL = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+    private static final LocalDate DEFAULT_DATA_INICIAL = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DATA_INICIAL = LocalDate.now(ZoneId.systemDefault());
 
-    private static final ZonedDateTime DEFAULT_DATA_FINAL = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
-    private static final ZonedDateTime UPDATED_DATA_FINAL = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+    private static final LocalDate DEFAULT_DATA_FINAL = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DATA_FINAL = LocalDate.now(ZoneId.systemDefault());
 
     private static final Status DEFAULT_STATUS = Status.PENDENTE;
     private static final Status UPDATED_STATUS = Status.PERDIDO;
@@ -182,8 +179,8 @@ public class PendenciaResourceIntTest {
             .andExpect(jsonPath("$.[*].id").value(hasItem(pendencia.getId().intValue())))
             .andExpect(jsonPath("$.[*].providencia").value(hasItem(DEFAULT_PROVIDENCIA.toString())))
             .andExpect(jsonPath("$.[*].observacoes").value(hasItem(DEFAULT_OBSERVACOES.toString())))
-            .andExpect(jsonPath("$.[*].dataInicial").value(hasItem(sameInstant(DEFAULT_DATA_INICIAL))))
-            .andExpect(jsonPath("$.[*].dataFinal").value(hasItem(sameInstant(DEFAULT_DATA_FINAL))))
+            .andExpect(jsonPath("$.[*].dataInicial").value(hasItem(DEFAULT_DATA_INICIAL.toString())))
+            .andExpect(jsonPath("$.[*].dataFinal").value(hasItem(DEFAULT_DATA_FINAL.toString())))
             .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS.toString())));
     }
 
@@ -200,8 +197,8 @@ public class PendenciaResourceIntTest {
             .andExpect(jsonPath("$.id").value(pendencia.getId().intValue()))
             .andExpect(jsonPath("$.providencia").value(DEFAULT_PROVIDENCIA.toString()))
             .andExpect(jsonPath("$.observacoes").value(DEFAULT_OBSERVACOES.toString()))
-            .andExpect(jsonPath("$.dataInicial").value(sameInstant(DEFAULT_DATA_INICIAL)))
-            .andExpect(jsonPath("$.dataFinal").value(sameInstant(DEFAULT_DATA_FINAL)))
+            .andExpect(jsonPath("$.dataInicial").value(DEFAULT_DATA_INICIAL.toString()))
+            .andExpect(jsonPath("$.dataFinal").value(DEFAULT_DATA_FINAL.toString()))
             .andExpect(jsonPath("$.status").value(DEFAULT_STATUS.toString()));
     }
 

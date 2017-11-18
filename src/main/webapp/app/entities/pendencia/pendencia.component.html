@@ -31,8 +31,8 @@
                 <td><a [routerLink]="['../pendencia', pendencia.id ]">{{pendencia.id}}</a></td>
                 <td>{{pendencia.providencia}}</td>
                 <td>{{pendencia.observacoes}}</td>
-                <td>{{pendencia.dataInicial | date:'medium'}}</td>
-                <td>{{pendencia.dataFinal | date:'medium'}}</td>
+                <td>{{pendencia.dataInicial | date:'mediumDate'}}</td>
+                <td>{{pendencia.dataFinal | date:'mediumDate'}}</td>
                 <td jhiTranslate="{{'discoveryApp.Status.' + pendencia.status}}">{{pendencia.status}}</td>
                 <td>
                     <div *ngIf="pendencia.processoId">

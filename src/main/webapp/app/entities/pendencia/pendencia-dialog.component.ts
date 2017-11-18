@@ -25,6 +25,8 @@ export class PendenciaDialogComponent implements OnInit {
     processos: Processo[];
 
     userextras: UserExtra[];
+    dataInicialDp: any;
+    dataFinalDp: any;
 
     constructor(
         public activeModal: NgbActiveModal,

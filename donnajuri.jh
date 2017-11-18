@@ -17,8 +17,8 @@ entity Processo{
 entity Pendencia {
     providencia String,
     observacoes TextBlob,
-    dataInicial ZonedDateTime,
-    dataFinal ZonedDateTime,
+    dataInicial LocalDate,
+    dataFinal LocalDate,
     status Status
 }
 

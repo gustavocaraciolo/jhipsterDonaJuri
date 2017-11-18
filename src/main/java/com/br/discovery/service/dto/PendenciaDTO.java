@@ -1,7 +1,7 @@
 package com.br.discovery.service.dto;
 
 
-import java.time.ZonedDateTime;
+import java.time.LocalDate;
 import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -22,9 +22,9 @@ public class PendenciaDTO implements Serializable {
     @Lob
     private String observacoes;
 
-    private ZonedDateTime dataInicial;
+    private LocalDate dataInicial;
 
-    private ZonedDateTime dataFinal;
+    private LocalDate dataFinal;
 
     private Status status;
 
@@ -56,19 +56,19 @@ public class PendenciaDTO implements Serializable {
         this.observacoes = observacoes;
     }
 
-    public ZonedDateTime getDataInicial() {
+    public LocalDate getDataInicial() {
         return dataInicial;
     }
 
-    public void setDataInicial(ZonedDateTime dataInicial) {
+    public void setDataInicial(LocalDate dataInicial) {
         this.dataInicial = dataInicial;
     }
 
-    public ZonedDateTime getDataFinal() {
+    public LocalDate getDataFinal() {
         return dataFinal;
     }
 
-    public void setDataFinal(ZonedDateTime dataFinal) {
+    public void setDataFinal(LocalDate dataFinal) {
         this.dataFinal = dataFinal;
     }
 

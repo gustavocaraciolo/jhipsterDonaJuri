@@ -1,7 +1,6 @@
 import { Injectable, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { DatePipe } from '@angular/common';
 import { Pendencia } from './pendencia.model';
 import { PendenciaService } from './pendencia.service';
 
@@ -10,7 +9,6 @@ export class PendenciaPopupService {
     private ngbModalRef: NgbModalRef;
 
     constructor(
-        private datePipe: DatePipe,
         private modalService: NgbModal,
         private router: Router,
         private pendenciaService: PendenciaService
@@ -28,10 +26,20 @@ export class PendenciaPopupService {
 
             if (id) {
                 this.pendenciaService.find(id).subscribe((pendencia) => {
-                    pendencia.dataInicial = this.datePipe
-                        .transform(pendencia.dataInicial, 'yyyy-MM-ddTHH:mm:ss');
-                    pendencia.dataFinal = this.datePipe
-                        .transform(pendencia.dataFinal, 'yyyy-MM-ddTHH:mm:ss');
+                    if (pendencia.dataInicial) {
+                        pendencia.dataInicial = {
+                            year: pendencia.dataInicial.getFullYear(),
+                            month: pendencia.dataInicial.getMonth() + 1,
+                            day: pendencia.dataInicial.getDate()
+                        };
+                    }
+                    if (pendencia.dataFinal) {
+                        pendencia.dataFinal = {
+                            year: pendencia.dataFinal.getFullYear(),
+                            month: pendencia.dataFinal.getMonth() + 1,
+                            day: pendencia.dataFinal.getDate()
+                        };
+                    }
                     this.ngbModalRef = this.pendenciaModalRef(component, pendencia);
                     resolve(this.ngbModalRef);
                 });

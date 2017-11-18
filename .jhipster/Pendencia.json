@@ -29,11 +29,11 @@
         },
         {
             "fieldName": "dataInicial",
-            "fieldType": "ZonedDateTime"
+            "fieldType": "LocalDate"
         },
         {
             "fieldName": "dataFinal",
-            "fieldType": "ZonedDateTime"
+            "fieldType": "LocalDate"
         },
         {
             "fieldName": "status",

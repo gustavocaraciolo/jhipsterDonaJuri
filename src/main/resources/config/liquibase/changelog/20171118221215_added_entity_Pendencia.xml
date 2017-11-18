@@ -30,11 +30,11 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="data_inicial" type="timestamp">
+            <column name="data_inicial" type="date">
                 <constraints nullable="true" />
             </column>
 
-            <column name="data_final" type="timestamp">
+            <column name="data_final" type="date">
                 <constraints nullable="true" />
             </column>
 
@@ -48,8 +48,6 @@
 
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
-        <dropDefaultValue tableName="pendencia" columnName="data_inicial" columnDataType="datetime"/>
-        <dropDefaultValue tableName="pendencia" columnName="data_final" columnDataType="datetime"/>
         
         <createTable tableName="pendencia_advogado">
             <column name="advogados_id" type="bigint">

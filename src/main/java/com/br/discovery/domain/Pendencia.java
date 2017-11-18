@@ -6,7 +6,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serializable;
-import java.time.ZonedDateTime;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Objects;
@@ -35,10 +35,10 @@ public class Pendencia implements Serializable {
     private String observacoes;
 
     @Column(name = "data_inicial")
-    private ZonedDateTime dataInicial;
+    private LocalDate dataInicial;
 
     @Column(name = "data_final")
-    private ZonedDateTime dataFinal;
+    private LocalDate dataFinal;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
@@ -90,29 +90,29 @@ public class Pendencia implements Serializable {
         this.observacoes = observacoes;
     }
 
-    public ZonedDateTime getDataInicial() {
+    public LocalDate getDataInicial() {
         return dataInicial;
     }
 
-    public Pendencia dataInicial(ZonedDateTime dataInicial) {
+    public Pendencia dataInicial(LocalDate dataInicial) {
         this.dataInicial = dataInicial;
         return this;
     }
 
-    public void setDataInicial(ZonedDateTime dataInicial) {
+    public void setDataInicial(LocalDate dataInicial) {
         this.dataInicial = dataInicial;
     }
 
-    public ZonedDateTime getDataFinal() {
+    public LocalDate getDataFinal() {
         return dataFinal;
     }
 
-    public Pendencia dataFinal(ZonedDateTime dataFinal) {
+    public Pendencia dataFinal(LocalDate dataFinal) {
         this.dataFinal = dataFinal;
         return this;
     }
 
-    public void setDataFinal(ZonedDateTime dataFinal) {
+    public void setDataFinal(LocalDate dataFinal) {
         this.dataFinal = dataFinal;
     }
 
