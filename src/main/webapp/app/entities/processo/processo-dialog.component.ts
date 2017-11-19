@@ -10,6 +10,7 @@ import { Processo } from './processo.model';
 import { ProcessoPopupService } from './processo-popup.service';
 import { ProcessoService } from './processo.service';
 import { UserExtra, UserExtraService } from '../user-extra';
+import { Anexo, AnexoService } from '../anexo';
 import { ResponseWrapper } from '../../shared';
 
 @Component({
@@ -25,11 +26,14 @@ export class ProcessoDialogComponent implements OnInit {
 
     userextras: UserExtra[];
 
+    anexos: Anexo[];
+
     constructor(
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
         private processoService: ProcessoService,
         private userExtraService: UserExtraService,
+        private anexoService: AnexoService,
         private eventManager: JhiEventManager
     ) {
     }
@@ -51,6 +55,8 @@ export class ProcessoDialogComponent implements OnInit {
             }, (res: ResponseWrapper) => this.onError(res.json));
         this.userExtraService.query()
             .subscribe((res: ResponseWrapper) => { this.userextras = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
+        this.anexoService.query()
+            .subscribe((res: ResponseWrapper) => { this.anexos = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
     }
 
     clear() {
@@ -88,6 +94,10 @@ export class ProcessoDialogComponent implements OnInit {
     }
 
     trackUserExtraById(index: number, item: UserExtra) {
+        return item.id;
+    }
+
+    trackAnexoById(index: number, item: Anexo) {
         return item.id;
     }
 

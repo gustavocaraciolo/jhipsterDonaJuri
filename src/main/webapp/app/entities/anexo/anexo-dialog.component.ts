@@ -6,39 +6,33 @@ import { Observable } from 'rxjs/Rx';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { JhiEventManager, JhiAlertService, JhiDataUtils } from 'ng-jhipster';
 
-import { Pendencia } from './pendencia.model';
-import { PendenciaPopupService } from './pendencia-popup.service';
-import { PendenciaService } from './pendencia.service';
+import { Anexo } from './anexo.model';
+import { AnexoPopupService } from './anexo-popup.service';
+import { AnexoService } from './anexo.service';
 import { Processo, ProcessoService } from '../processo';
-import { UserExtra, UserExtraService } from '../user-extra';
-import { Anexo, AnexoService } from '../anexo';
+import { Pendencia, PendenciaService } from '../pendencia';
 import { ResponseWrapper } from '../../shared';
 
 @Component({
-    selector: 'jhi-pendencia-dialog',
-    templateUrl: './pendencia-dialog.component.html'
+    selector: 'jhi-anexo-dialog',
+    templateUrl: './anexo-dialog.component.html'
 })
-export class PendenciaDialogComponent implements OnInit {
+export class AnexoDialogComponent implements OnInit {
 
-    pendencia: Pendencia;
+    anexo: Anexo;
     isSaving: boolean;
 
     processos: Processo[];
 
-    userextras: UserExtra[];
-
-    anexos: Anexo[];
-    dataInicialDp: any;
-    dataFinalDp: any;
+    pendencias: Pendencia[];
 
     constructor(
         public activeModal: NgbActiveModal,
         private dataUtils: JhiDataUtils,
         private jhiAlertService: JhiAlertService,
-        private pendenciaService: PendenciaService,
-        private processoService: ProcessoService,
-        private userExtraService: UserExtraService,
         private anexoService: AnexoService,
+        private processoService: ProcessoService,
+        private pendenciaService: PendenciaService,
         private eventManager: JhiEventManager
     ) {
     }
@@ -47,10 +41,8 @@ export class PendenciaDialogComponent implements OnInit {
         this.isSaving = false;
         this.processoService.query()
             .subscribe((res: ResponseWrapper) => { this.processos = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
-        this.userExtraService.query()
-            .subscribe((res: ResponseWrapper) => { this.userextras = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
-        this.anexoService.query()
-            .subscribe((res: ResponseWrapper) => { this.anexos = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
+        this.pendenciaService.query()
+            .subscribe((res: ResponseWrapper) => { this.pendencias = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
     }
 
     byteSize(field) {
@@ -71,22 +63,22 @@ export class PendenciaDialogComponent implements OnInit {
 
     save() {
         this.isSaving = true;
-        if (this.pendencia.id !== undefined) {
+        if (this.anexo.id !== undefined) {
             this.subscribeToSaveResponse(
-                this.pendenciaService.update(this.pendencia));
+                this.anexoService.update(this.anexo));
         } else {
             this.subscribeToSaveResponse(
-                this.pendenciaService.create(this.pendencia));
+                this.anexoService.create(this.anexo));
         }
     }
 
-    private subscribeToSaveResponse(result: Observable<Pendencia>) {
-        result.subscribe((res: Pendencia) =>
+    private subscribeToSaveResponse(result: Observable<Anexo>) {
+        result.subscribe((res: Anexo) =>
             this.onSaveSuccess(res), (res: Response) => this.onSaveError());
     }
 
-    private onSaveSuccess(result: Pendencia) {
-        this.eventManager.broadcast({ name: 'pendenciaListModification', content: 'OK'});
+    private onSaveSuccess(result: Anexo) {
+        this.eventManager.broadcast({ name: 'anexoListModification', content: 'OK'});
         this.isSaving = false;
         this.activeModal.dismiss(result);
     }
@@ -103,11 +95,7 @@ export class PendenciaDialogComponent implements OnInit {
         return item.id;
     }
 
-    trackUserExtraById(index: number, item: UserExtra) {
-        return item.id;
-    }
-
-    trackAnexoById(index: number, item: Anexo) {
+    trackPendenciaById(index: number, item: Pendencia) {
         return item.id;
     }
 
@@ -124,26 +112,26 @@ export class PendenciaDialogComponent implements OnInit {
 }
 
 @Component({
-    selector: 'jhi-pendencia-popup',
+    selector: 'jhi-anexo-popup',
     template: ''
 })
-export class PendenciaPopupComponent implements OnInit, OnDestroy {
+export class AnexoPopupComponent implements OnInit, OnDestroy {
 
     routeSub: any;
 
     constructor(
         private route: ActivatedRoute,
-        private pendenciaPopupService: PendenciaPopupService
+        private anexoPopupService: AnexoPopupService
     ) {}
 
     ngOnInit() {
         this.routeSub = this.route.params.subscribe((params) => {
             if ( params['id'] ) {
-                this.pendenciaPopupService
-                    .open(PendenciaDialogComponent as Component, params['id']);
+                this.anexoPopupService
+                    .open(AnexoDialogComponent as Component, params['id']);
             } else {
-                this.pendenciaPopupService
-                    .open(PendenciaDialogComponent as Component);
+                this.anexoPopupService
+                    .open(AnexoDialogComponent as Component);
             }
         });
     }

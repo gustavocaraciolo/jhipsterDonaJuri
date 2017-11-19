@@ -25,5 +25,16 @@
                                  referencedColumnNames="id"
                                  referencedTableName="user_extra"/>
         
+        <addForeignKeyConstraint baseColumnNames="pendencias_id"
+                                 baseTableName="pendencia_anexo"
+                                 constraintName="fk_pendencia_anexo_pendencias_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="pendencia"/>
+        <addForeignKeyConstraint baseColumnNames="anexos_id"
+                                 baseTableName="pendencia_anexo"
+                                 constraintName="fk_pendencia_anexo_anexos_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="anexo"/>
+        
     </changeSet>
 </databaseChangeLog>

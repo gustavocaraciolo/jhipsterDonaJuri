@@ -26,6 +26,14 @@
             "ownerSide": true
         },
         {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "processo",
+            "relationshipName": "anexo",
+            "otherEntityName": "anexo",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
             "relationshipType": "one-to-many",
             "relationshipName": "pendencia",
             "otherEntityName": "pendencia",

@@ -54,6 +54,13 @@ public class Processo implements Serializable {
                inverseJoinColumns = @JoinColumn(name="advogados_id", referencedColumnName="id"))
     private Set<UserExtra> advogados = new HashSet<>();
 
+    @ManyToMany
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    @JoinTable(name = "processo_anexo",
+               joinColumns = @JoinColumn(name="processos_id", referencedColumnName="id"),
+               inverseJoinColumns = @JoinColumn(name="anexos_id", referencedColumnName="id"))
+    private Set<Anexo> anexos = new HashSet<>();
+
     @OneToMany(mappedBy = "processo")
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -156,6 +163,31 @@ public class Processo implements Serializable {
 
     public void setAdvogados(Set<UserExtra> userExtras) {
         this.advogados = userExtras;
+    }
+
+    public Set<Anexo> getAnexos() {
+        return anexos;
+    }
+
+    public Processo anexos(Set<Anexo> anexos) {
+        this.anexos = anexos;
+        return this;
+    }
+
+    public Processo addAnexo(Anexo anexo) {
+        this.anexos.add(anexo);
+        anexo.getProcessos().add(this);
+        return this;
+    }
+
+    public Processo removeAnexo(Anexo anexo) {
+        this.anexos.remove(anexo);
+        anexo.getProcessos().remove(this);
+        return this;
+    }
+
+    public void setAnexos(Set<Anexo> anexos) {
+        this.anexos = anexos;
     }
 
     public Set<Pendencia> getPendencias() {

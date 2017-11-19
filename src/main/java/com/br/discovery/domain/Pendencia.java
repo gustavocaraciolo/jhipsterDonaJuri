@@ -55,6 +55,13 @@ public class Pendencia implements Serializable {
                inverseJoinColumns = @JoinColumn(name="advogados_id", referencedColumnName="id"))
     private Set<UserExtra> advogados = new HashSet<>();
 
+    @ManyToMany
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    @JoinTable(name = "pendencia_anexo",
+               joinColumns = @JoinColumn(name="pendencias_id", referencedColumnName="id"),
+               inverseJoinColumns = @JoinColumn(name="anexos_id", referencedColumnName="id"))
+    private Set<Anexo> anexos = new HashSet<>();
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -165,6 +172,31 @@ public class Pendencia implements Serializable {
 
     public void setAdvogados(Set<UserExtra> userExtras) {
         this.advogados = userExtras;
+    }
+
+    public Set<Anexo> getAnexos() {
+        return anexos;
+    }
+
+    public Pendencia anexos(Set<Anexo> anexos) {
+        this.anexos = anexos;
+        return this;
+    }
+
+    public Pendencia addAnexo(Anexo anexo) {
+        this.anexos.add(anexo);
+        anexo.getPendencias().add(this);
+        return this;
+    }
+
+    public Pendencia removeAnexo(Anexo anexo) {
+        this.anexos.remove(anexo);
+        anexo.getPendencias().remove(this);
+        return this;
+    }
+
+    public void setAnexos(Set<Anexo> anexos) {
+        this.anexos = anexos;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

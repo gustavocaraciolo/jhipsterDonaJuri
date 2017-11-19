@@ -34,6 +34,12 @@
                 <a [routerLink]="['/user-extra', advogado?.id ]">{{advogado.id}}</a>{{last ? '' : ', '}}
             </span>
         </dd>
+        <dt><span jhiTranslate="discoveryApp.processo.anexo">Anexo</span></dt>
+        <dd>
+            <span *ngFor="let anexo of processo.anexos; let last = last">
+                <a [routerLink]="['/anexo', anexo?.id ]">{{anexo.id}}</a>{{last ? '' : ', '}}
+            </span>
+        </dd>
     </dl>
 
     <button type="submit"

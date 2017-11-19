@@ -60,6 +60,17 @@
 
         <addPrimaryKey columnNames="pendencias_id, advogados_id" tableName="pendencia_advogado"/>
         
+        <createTable tableName="pendencia_anexo">
+            <column name="anexos_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="pendencias_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="pendencias_id, anexos_id" tableName="pendencia_anexo"/>
+        
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
 </databaseChangeLog>

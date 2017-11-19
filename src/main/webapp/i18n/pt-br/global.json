@@ -11,6 +11,7 @@
                 "userExtra": "User Extra",
                 "processo": "Processo",
                 "pendencia": "Pendencia",
+                "anexo": "Anexo",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

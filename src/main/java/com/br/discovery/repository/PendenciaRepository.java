@@ -13,10 +13,10 @@ import java.util.List;
 @SuppressWarnings("unused")
 @Repository
 public interface PendenciaRepository extends JpaRepository<Pendencia, Long> {
-    @Query("select distinct pendencia from Pendencia pendencia left join fetch pendencia.advogados")
+    @Query("select distinct pendencia from Pendencia pendencia left join fetch pendencia.advogados left join fetch pendencia.anexos")
     List<Pendencia> findAllWithEagerRelationships();
 
-    @Query("select pendencia from Pendencia pendencia left join fetch pendencia.advogados where pendencia.id =:id")
+    @Query("select pendencia from Pendencia pendencia left join fetch pendencia.advogados left join fetch pendencia.anexos where pendencia.id =:id")
     Pendencia findOneWithEagerRelationships(@Param("id") Long id);
 
 }

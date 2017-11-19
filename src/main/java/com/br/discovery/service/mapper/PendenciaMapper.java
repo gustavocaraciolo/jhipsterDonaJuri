@@ -8,7 +8,7 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity Pendencia and its DTO PendenciaDTO.
  */
-@Mapper(componentModel = "spring", uses = {ProcessoMapper.class, UserExtraMapper.class})
+@Mapper(componentModel = "spring", uses = {ProcessoMapper.class, UserExtraMapper.class, AnexoMapper.class})
 public interface PendenciaMapper extends EntityMapper<PendenciaDTO, Pendencia> {
 
     @Mapping(source = "processo.id", target = "processoId")

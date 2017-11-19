@@ -71,6 +71,12 @@
                 <option [ngValue]="getSelected(pendencia.advogados, userExtraOption)" *ngFor="let userExtraOption of userextras; trackBy: trackUserExtraById">{{userExtraOption.id}}</option>
             </select>
         </div>
+        <div class="form-group">
+            <label jhiTranslate="discoveryApp.pendencia.anexo" for="field_anexo">Anexo</label>
+            <select class="form-control" id="field_anexo" multiple name="anexo" [(ngModel)]="pendencia.anexos">
+                <option [ngValue]="getSelected(pendencia.anexos, anexoOption)" *ngFor="let anexoOption of anexos; trackBy: trackAnexoById">{{anexoOption.id}}</option>
+            </select>
+        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">

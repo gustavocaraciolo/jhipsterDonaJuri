@@ -8,7 +8,7 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity Processo and its DTO ProcessoDTO.
  */
-@Mapper(componentModel = "spring", uses = {UserExtraMapper.class})
+@Mapper(componentModel = "spring", uses = {UserExtraMapper.class, AnexoMapper.class})
 public interface ProcessoMapper extends EntityMapper<ProcessoDTO, Processo> {
 
     @Mapping(source = "advogadoCorrente.id", target = "advogadoCorrenteId")

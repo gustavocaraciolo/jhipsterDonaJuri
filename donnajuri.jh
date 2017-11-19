@@ -8,6 +8,10 @@ entity UserExtra{
 
 }
 
+entity Anexo {
+    file AnyBlob
+}
+
 entity Processo{
     numero String required,
     status Status,
@@ -31,7 +35,9 @@ enum Status {
 
 relationship ManyToMany{
     Processo{advogado} to UserExtra{processoAdvogado},
-    Pendencia{advogado} to UserExtra{pendenciaAdvogado}
+    Pendencia{advogado} to UserExtra{pendenciaAdvogado},
+    Processo{anexo} to Anexo{processo},
+    Pendencia{anexo} to Anexo{pendencia}
 }
 
 relationship ManyToOne{
@@ -39,6 +45,7 @@ relationship ManyToOne{
     UserExtra{escritorio required} to Escritorio{userExtra},
     Pendencia{processo required} to Processo{pendencia}
 }
+
 
 relationship OneToOne{
     Processo{advogadoCorrente required} to UserExtra{processoAdvogadoCorrente},

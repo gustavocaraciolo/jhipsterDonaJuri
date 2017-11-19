@@ -28,6 +28,8 @@ public class ProcessoDTO implements Serializable {
 
     private Set<UserExtraDTO> advogados = new HashSet<>();
 
+    private Set<AnexoDTO> anexos = new HashSet<>();
+
     public Long getId() {
         return id;
     }
@@ -82,6 +84,14 @@ public class ProcessoDTO implements Serializable {
 
     public void setAdvogados(Set<UserExtraDTO> userExtras) {
         this.advogados = userExtras;
+    }
+
+    public Set<AnexoDTO> getAnexos() {
+        return anexos;
+    }
+
+    public void setAnexos(Set<AnexoDTO> anexos) {
+        this.anexos = anexos;
     }
 
     @Override

@@ -31,5 +31,16 @@
                                  referencedColumnNames="id"
                                  referencedTableName="user_extra"/>
         
+        <addForeignKeyConstraint baseColumnNames="processos_id"
+                                 baseTableName="processo_anexo"
+                                 constraintName="fk_processo_anexo_processos_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="processo"/>
+        <addForeignKeyConstraint baseColumnNames="anexos_id"
+                                 baseTableName="processo_anexo"
+                                 constraintName="fk_processo_anexo_anexos_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="anexo"/>
+        
     </changeSet>
 </databaseChangeLog>

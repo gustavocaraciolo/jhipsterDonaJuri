@@ -13,10 +13,10 @@ import java.util.List;
 @SuppressWarnings("unused")
 @Repository
 public interface ProcessoRepository extends JpaRepository<Processo, Long> {
-    @Query("select distinct processo from Processo processo left join fetch processo.advogados")
+    @Query("select distinct processo from Processo processo left join fetch processo.advogados left join fetch processo.anexos")
     List<Processo> findAllWithEagerRelationships();
 
-    @Query("select processo from Processo processo left join fetch processo.advogados where processo.id =:id")
+    @Query("select processo from Processo processo left join fetch processo.advogados left join fetch processo.anexos where processo.id =:id")
     Processo findOneWithEagerRelationships(@Param("id") Long id);
 
 }

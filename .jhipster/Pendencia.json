@@ -15,6 +15,14 @@
             "otherEntityName": "userExtra",
             "otherEntityField": "id",
             "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "pendencia",
+            "relationshipName": "anexo",
+            "otherEntityName": "anexo",
+            "otherEntityField": "id",
+            "ownerSide": true
         }
     ],
     "fields": [

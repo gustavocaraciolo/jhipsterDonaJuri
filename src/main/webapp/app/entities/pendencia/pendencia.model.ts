@@ -17,6 +17,7 @@ export class Pendencia implements BaseEntity {
         public status?: Status,
         public processoId?: number,
         public advogados?: BaseEntity[],
+        public anexos?: BaseEntity[],
     ) {
     }
 }
