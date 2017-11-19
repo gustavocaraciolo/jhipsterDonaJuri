@@ -22,9 +22,9 @@ public class ProcessoDTO implements Serializable {
 
     private String parteadversa;
 
-    private Long advogadoCorrenteId;
-
     private Long clienteId;
+
+    private Long advogadoCorrenteId;
 
     private Set<UserExtraDTO> advogados = new HashSet<>();
 
@@ -62,20 +62,20 @@ public class ProcessoDTO implements Serializable {
         this.parteadversa = parteadversa;
     }
 
-    public Long getAdvogadoCorrenteId() {
-        return advogadoCorrenteId;
-    }
-
-    public void setAdvogadoCorrenteId(Long userExtraId) {
-        this.advogadoCorrenteId = userExtraId;
-    }
-
     public Long getClienteId() {
         return clienteId;
     }
 
     public void setClienteId(Long userExtraId) {
         this.clienteId = userExtraId;
+    }
+
+    public Long getAdvogadoCorrenteId() {
+        return advogadoCorrenteId;
+    }
+
+    public void setAdvogadoCorrenteId(Long userExtraId) {
+        this.advogadoCorrenteId = userExtraId;
     }
 
     public Set<UserExtraDTO> getAdvogados() {

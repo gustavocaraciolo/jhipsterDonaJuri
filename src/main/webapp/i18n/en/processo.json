@@ -18,8 +18,8 @@
             "numero": "Numero",
             "status": "Status",
             "parteadversa": "Parteadversa",
-            "advogadoCorrente": "Advogado Corrente",
             "cliente": "Cliente",
+            "advogadoCorrente": "Advogado Corrente",
             "advogado": "Advogado",
             "anexo": "Anexo",
             "pendencia": "Pendencia"

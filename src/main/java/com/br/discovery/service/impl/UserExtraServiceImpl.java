@@ -12,10 +12,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 /**
  * Service Implementation for managing UserExtra.
@@ -61,21 +57,6 @@ public class UserExtraServiceImpl implements UserExtraService{
         log.debug("Request to get all UserExtras");
         return userExtraRepository.findAll(pageable)
             .map(userExtraMapper::toDto);
-    }
-
-
-    /**
-     *  get all the userExtras where ProcessoAdvogadoCorrente is null.
-     *  @return the list of entities
-     */
-    @Transactional(readOnly = true) 
-    public List<UserExtraDTO> findAllWhereProcessoAdvogadoCorrenteIsNull() {
-        log.debug("Request to get all userExtras where ProcessoAdvogadoCorrente is null");
-        return StreamSupport
-            .stream(userExtraRepository.findAll().spliterator(), false)
-            .filter(userExtra -> userExtra.getProcessoAdvogadoCorrente() == null)
-            .map(userExtraMapper::toDto)
-            .collect(Collectors.toCollection(LinkedList::new));
     }
 
     /**

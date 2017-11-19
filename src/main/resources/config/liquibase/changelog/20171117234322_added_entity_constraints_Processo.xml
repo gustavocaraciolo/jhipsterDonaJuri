@@ -8,15 +8,15 @@
     -->
     <changeSet id="20171117234322-2" author="jhipster">
         
-        <addForeignKeyConstraint baseColumnNames="advogado_corrente_id"
-                                 baseTableName="processo"
-                                 constraintName="fk_processo_advogado_corrente_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="user_extra"/>
-
         <addForeignKeyConstraint baseColumnNames="cliente_id"
                                  baseTableName="processo"
                                  constraintName="fk_processo_cliente_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="user_extra"/>
+
+        <addForeignKeyConstraint baseColumnNames="advogado_corrente_id"
+                                 baseTableName="processo"
+                                 constraintName="fk_processo_advogado_corrente_id"
                                  referencedColumnNames="id"
                                  referencedTableName="user_extra"/>
 

@@ -23,7 +23,6 @@ import java.net.URISyntaxException;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.StreamSupport;
 
 /**
  * REST controller for managing UserExtra.
@@ -88,17 +87,11 @@ public class UserExtraResource {
      * GET  /user-extras : get all the userExtras.
      *
      * @param pageable the pagination information
-     * @param filter the filter of the request
      * @return the ResponseEntity with status 200 (OK) and the list of userExtras in body
      */
     @GetMapping("/user-extras")
     @Timed
-    public ResponseEntity<List<UserExtraDTO>> getAllUserExtras(@ApiParam Pageable pageable, @RequestParam(required = false) String filter) {
-        if ("processoadvogadocorrente-is-null".equals(filter)) {
-            log.debug("REST request to get all UserExtras where processoAdvogadoCorrente is null");
-            return new ResponseEntity<>(userExtraService.findAllWhereProcessoAdvogadoCorrenteIsNull(),
-                    HttpStatus.OK);
-        }
+    public ResponseEntity<List<UserExtraDTO>> getAllUserExtras(@ApiParam Pageable pageable) {
         log.debug("REST request to get a page of UserExtras");
         Page<UserExtraDTO> page = userExtraService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/user-extras");

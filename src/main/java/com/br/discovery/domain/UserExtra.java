@@ -34,14 +34,15 @@ public class UserExtra implements Serializable {
     @NotNull
     private Escritorio escritorio;
 
-    @OneToOne(mappedBy = "advogadoCorrente")
-    @JsonIgnore
-    private Processo processoAdvogadoCorrente;
-
     @OneToMany(mappedBy = "cliente")
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Processo> processoClientes = new HashSet<>();
+
+    @OneToMany(mappedBy = "advogadoCorrente")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Processo> processoAdvogadoCorrentes = new HashSet<>();
 
     @ManyToMany(mappedBy = "advogados")
     @JsonIgnore
@@ -88,19 +89,6 @@ public class UserExtra implements Serializable {
         this.escritorio = escritorio;
     }
 
-    public Processo getProcessoAdvogadoCorrente() {
-        return processoAdvogadoCorrente;
-    }
-
-    public UserExtra processoAdvogadoCorrente(Processo processo) {
-        this.processoAdvogadoCorrente = processo;
-        return this;
-    }
-
-    public void setProcessoAdvogadoCorrente(Processo processo) {
-        this.processoAdvogadoCorrente = processo;
-    }
-
     public Set<Processo> getProcessoClientes() {
         return processoClientes;
     }
@@ -124,6 +112,31 @@ public class UserExtra implements Serializable {
 
     public void setProcessoClientes(Set<Processo> processos) {
         this.processoClientes = processos;
+    }
+
+    public Set<Processo> getProcessoAdvogadoCorrentes() {
+        return processoAdvogadoCorrentes;
+    }
+
+    public UserExtra processoAdvogadoCorrentes(Set<Processo> processos) {
+        this.processoAdvogadoCorrentes = processos;
+        return this;
+    }
+
+    public UserExtra addProcessoAdvogadoCorrente(Processo processo) {
+        this.processoAdvogadoCorrentes.add(processo);
+        processo.setAdvogadoCorrente(this);
+        return this;
+    }
+
+    public UserExtra removeProcessoAdvogadoCorrente(Processo processo) {
+        this.processoAdvogadoCorrentes.remove(processo);
+        processo.setAdvogadoCorrente(null);
+        return this;
+    }
+
+    public void setProcessoAdvogadoCorrentes(Set<Processo> processos) {
+        this.processoAdvogadoCorrentes = processos;
     }
 
     public Set<Processo> getProcessoAdvogados() {

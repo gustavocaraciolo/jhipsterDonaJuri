@@ -57,6 +57,7 @@ public class DonnaBootstrap implements CommandLineRunner {
         UserExtra cliente = getUser("João", "joao@teste.com", roleCliente(), escritorio);
 
         Processo processo = getProcesso("0000575-40.2017.1.13.5212", "CELPE", cliente, advogadoCorrente);
+        getProcesso("0000575-40.2017.1.13.5212", "CELPE", cliente, advogadoCorrente);
     }
 
     private Processo getProcesso(String numero, String parteAdversa, UserExtra cliente, UserExtra advogadoCorrente) {

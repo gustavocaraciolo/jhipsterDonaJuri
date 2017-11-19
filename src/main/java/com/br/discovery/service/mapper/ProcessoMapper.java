@@ -11,12 +11,12 @@ import org.mapstruct.*;
 @Mapper(componentModel = "spring", uses = {UserExtraMapper.class, AnexoMapper.class})
 public interface ProcessoMapper extends EntityMapper<ProcessoDTO, Processo> {
 
-    @Mapping(source = "advogadoCorrente.id", target = "advogadoCorrenteId")
     @Mapping(source = "cliente.id", target = "clienteId")
+    @Mapping(source = "advogadoCorrente.id", target = "advogadoCorrenteId")
     ProcessoDTO toDto(Processo processo); 
 
-    @Mapping(source = "advogadoCorrenteId", target = "advogadoCorrente")
     @Mapping(source = "clienteId", target = "cliente")
+    @Mapping(source = "advogadoCorrenteId", target = "advogadoCorrente")
     @Mapping(target = "pendencias", ignore = true)
     Processo toEntity(ProcessoDTO processoDTO);
 

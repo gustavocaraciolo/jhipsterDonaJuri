@@ -20,8 +20,8 @@
             <th jhiSortBy="numero"><span jhiTranslate="discoveryApp.processo.numero">Numero</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="status"><span jhiTranslate="discoveryApp.processo.status">Status</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="parteadversa"><span jhiTranslate="discoveryApp.processo.parteadversa">Parteadversa</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="advogadoCorrenteId"><span jhiTranslate="discoveryApp.processo.advogadoCorrente">Advogado Corrente</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="clienteId"><span jhiTranslate="discoveryApp.processo.cliente">Cliente</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="advogadoCorrenteId"><span jhiTranslate="discoveryApp.processo.advogadoCorrente">Advogado Corrente</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -32,13 +32,13 @@
                 <td jhiTranslate="{{'discoveryApp.Status.' + processo.status}}">{{processo.status}}</td>
                 <td>{{processo.parteadversa}}</td>
                 <td>
-                    <div *ngIf="processo.advogadoCorrenteId">
-                        <a [routerLink]="['../user-extra', processo.advogadoCorrenteId  ]" >{{processo.advogadoCorrenteId}}</a>
+                    <div *ngIf="processo.clienteId">
+                        <a [routerLink]="['../user-extra', processo.clienteId  ]" >{{processo.clienteId}}</a>
                     </div>
                 </td>
                 <td>
-                    <div *ngIf="processo.clienteId">
-                        <a [routerLink]="['../user-extra', processo.clienteId  ]" >{{processo.clienteId}}</a>
+                    <div *ngIf="processo.advogadoCorrenteId">
+                        <a [routerLink]="['../user-extra', processo.advogadoCorrenteId  ]" >{{processo.advogadoCorrenteId}}</a>
                     </div>
                 </td>
                 <td class="text-right">

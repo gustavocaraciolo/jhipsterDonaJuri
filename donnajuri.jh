@@ -42,13 +42,13 @@ relationship ManyToMany{
 
 relationship ManyToOne{
     Processo{cliente required} to UserExtra{processoCliente},
+    Processo{advogadoCorrente required} to UserExtra{processoAdvogadoCorrente},
     UserExtra{escritorio required} to Escritorio{userExtra},
     Pendencia{processo required} to Processo{pendencia}
 }
 
 
 relationship OneToOne{
-    Processo{advogadoCorrente required} to UserExtra{processoAdvogadoCorrente},
     UserExtra{user required} to User{userExtra}
 }
 

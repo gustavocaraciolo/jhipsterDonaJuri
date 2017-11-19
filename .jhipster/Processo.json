@@ -2,18 +2,16 @@
     "fluentMethods": true,
     "relationships": [
         {
-            "relationshipType": "one-to-one",
+            "relationshipType": "many-to-one",
             "relationshipValidateRules": "required",
-            "relationshipName": "advogadoCorrente",
+            "relationshipName": "cliente",
             "otherEntityName": "userExtra",
-            "otherEntityField": "id",
-            "ownerSide": true,
-            "otherEntityRelationshipName": "processoAdvogadoCorrente"
+            "otherEntityField": "id"
         },
         {
             "relationshipType": "many-to-one",
             "relationshipValidateRules": "required",
-            "relationshipName": "cliente",
+            "relationshipName": "advogadoCorrente",
             "otherEntityName": "userExtra",
             "otherEntityField": "id"
         },

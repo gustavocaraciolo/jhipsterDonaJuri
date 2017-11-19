@@ -22,8 +22,6 @@ export class ProcessoDialogComponent implements OnInit {
     processo: Processo;
     isSaving: boolean;
 
-    advogadocorrentes: UserExtra[];
-
     userextras: UserExtra[];
 
     anexos: Anexo[];
@@ -40,19 +38,6 @@ export class ProcessoDialogComponent implements OnInit {
 
     ngOnInit() {
         this.isSaving = false;
-        this.userExtraService
-            .query({filter: 'processoadvogadocorrente-is-null'})
-            .subscribe((res: ResponseWrapper) => {
-                if (!this.processo.advogadoCorrenteId) {
-                    this.advogadocorrentes = res.json;
-                } else {
-                    this.userExtraService
-                        .find(this.processo.advogadoCorrenteId)
-                        .subscribe((subRes: UserExtra) => {
-                            this.advogadocorrentes = [subRes].concat(res.json);
-                        }, (subRes: ResponseWrapper) => this.onError(subRes.json));
-                }
-            }, (res: ResponseWrapper) => this.onError(res.json));
         this.userExtraService.query()
             .subscribe((res: ResponseWrapper) => { this.userextras = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
         this.anexoService.query()

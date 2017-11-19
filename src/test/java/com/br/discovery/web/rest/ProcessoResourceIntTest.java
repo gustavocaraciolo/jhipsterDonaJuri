@@ -101,15 +101,15 @@ public class ProcessoResourceIntTest {
             .status(DEFAULT_STATUS)
             .parteadversa(DEFAULT_PARTEADVERSA);
         // Add required entity
-        UserExtra advogadoCorrente = UserExtraResourceIntTest.createEntity(em);
-        em.persist(advogadoCorrente);
-        em.flush();
-        processo.setAdvogadoCorrente(advogadoCorrente);
-        // Add required entity
         UserExtra cliente = UserExtraResourceIntTest.createEntity(em);
         em.persist(cliente);
         em.flush();
         processo.setCliente(cliente);
+        // Add required entity
+        UserExtra advogadoCorrente = UserExtraResourceIntTest.createEntity(em);
+        em.persist(advogadoCorrente);
+        em.flush();
+        processo.setAdvogadoCorrente(advogadoCorrente);
         return processo;
     }
 

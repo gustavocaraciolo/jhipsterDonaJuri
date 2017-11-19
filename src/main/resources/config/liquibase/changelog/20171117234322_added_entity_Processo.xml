@@ -33,10 +33,12 @@
             <column name="parteadversa" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="advogado_corrente_id" type="bigint">
-                <constraints unique="true" nullable="false" />
-            </column>
+
             <column name="cliente_id" type="bigint">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="advogado_corrente_id" type="bigint">
                 <constraints nullable="false" />
             </column>
 

@@ -16,16 +16,16 @@
         <dd>
             <span>{{processo.parteadversa}}</span>
         </dd>
-        <dt><span jhiTranslate="discoveryApp.processo.advogadoCorrente">Advogado Corrente</span></dt>
-        <dd>
-            <div *ngIf="processo.advogadoCorrenteId">
-                <a [routerLink]="['/user-extra', processo.advogadoCorrenteId]">{{processo.advogadoCorrenteId}}</a>
-            </div>
-        </dd>
         <dt><span jhiTranslate="discoveryApp.processo.cliente">Cliente</span></dt>
         <dd>
             <div *ngIf="processo.clienteId">
                 <a [routerLink]="['/user-extra', processo.clienteId]">{{processo.clienteId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="discoveryApp.processo.advogadoCorrente">Advogado Corrente</span></dt>
+        <dd>
+            <div *ngIf="processo.advogadoCorrenteId">
+                <a [routerLink]="['/user-extra', processo.advogadoCorrenteId]">{{processo.advogadoCorrenteId}}</a>
             </div>
         </dd>
         <dt><span jhiTranslate="discoveryApp.processo.advogado">Advogado</span></dt>

@@ -38,14 +38,13 @@ public class Processo implements Serializable {
     @Column(name = "parteadversa")
     private String parteadversa;
 
-    @OneToOne(optional = false)
-    @NotNull
-    @JoinColumn(unique = true)
-    private UserExtra advogadoCorrente;
-
     @ManyToOne(optional = false)
     @NotNull
     private UserExtra cliente;
+
+    @ManyToOne(optional = false)
+    @NotNull
+    private UserExtra advogadoCorrente;
 
     @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -114,19 +113,6 @@ public class Processo implements Serializable {
         this.parteadversa = parteadversa;
     }
 
-    public UserExtra getAdvogadoCorrente() {
-        return advogadoCorrente;
-    }
-
-    public Processo advogadoCorrente(UserExtra userExtra) {
-        this.advogadoCorrente = userExtra;
-        return this;
-    }
-
-    public void setAdvogadoCorrente(UserExtra userExtra) {
-        this.advogadoCorrente = userExtra;
-    }
-
     public UserExtra getCliente() {
         return cliente;
     }
@@ -138,6 +124,19 @@ public class Processo implements Serializable {
 
     public void setCliente(UserExtra userExtra) {
         this.cliente = userExtra;
+    }
+
+    public UserExtra getAdvogadoCorrente() {
+        return advogadoCorrente;
+    }
+
+    public Processo advogadoCorrente(UserExtra userExtra) {
+        this.advogadoCorrente = userExtra;
+        return this;
+    }
+
+    public void setAdvogadoCorrente(UserExtra userExtra) {
+        this.advogadoCorrente = userExtra;
     }
 
     public Set<UserExtra> getAdvogados() {

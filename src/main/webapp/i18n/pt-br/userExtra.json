@@ -17,8 +17,8 @@
             },
             "user": "User",
             "escritorio": "Escritorio",
-            "processoAdvogadoCorrente": "Processo Advogado Corrente",
             "processoCliente": "Processo Cliente",
+            "processoAdvogadoCorrente": "Processo Advogado Corrente",
             "processoAdvogado": "Processo Advogado",
             "pendenciaAdvogado": "Pendencia Advogado"
         }

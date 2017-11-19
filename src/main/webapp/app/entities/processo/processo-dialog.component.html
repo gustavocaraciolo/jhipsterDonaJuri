@@ -39,19 +39,6 @@
         </div>
 
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="discoveryApp.processo.advogadoCorrente" for="field_advogadoCorrente">Advogado Corrente</label>
-            <select class="form-control" id="field_advogadoCorrente" name="advogadoCorrente" [(ngModel)]="processo.advogadoCorrenteId" required>
-                <option *ngIf="!editForm.value.advogadoCorrente" [ngValue]="null" selected></option>
-                <option [ngValue]="userExtraOption.id" *ngFor="let userExtraOption of advogadocorrentes; trackBy: trackUserExtraById">{{userExtraOption.id}}</option>
-            </select>
-        </div>
-        <div [hidden]="!(editForm.controls.advogadoCorrente?.dirty && editForm.controls.advogadoCorrente?.invalid)">
-            <small class="form-text text-danger"
-                [hidden]="!editForm.controls.advogadoCorrente?.errors?.required" jhiTranslate="entity.validation.required">
-                This field is required.
-            </small>
-        </div>
-        <div class="form-group">
             <label class="form-control-label" jhiTranslate="discoveryApp.processo.cliente" for="field_cliente">Cliente</label>
             <select class="form-control" id="field_cliente" name="cliente" [(ngModel)]="processo.clienteId"  required>
                 <option *ngIf="!editForm.value.cliente" [ngValue]="null" selected></option>
@@ -61,6 +48,19 @@
         <div [hidden]="!(editForm.controls.cliente?.dirty && editForm.controls.cliente?.invalid)">
             <small class="form-text text-danger"
                 [hidden]="!editForm.controls.cliente?.errors?.required" jhiTranslate="entity.validation.required">
+                This field is required.
+            </small>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="discoveryApp.processo.advogadoCorrente" for="field_advogadoCorrente">Advogado Corrente</label>
+            <select class="form-control" id="field_advogadoCorrente" name="advogadoCorrente" [(ngModel)]="processo.advogadoCorrenteId"  required>
+                <option *ngIf="!editForm.value.advogadoCorrente" [ngValue]="null" selected></option>
+                <option [ngValue]="userExtraOption.id" *ngFor="let userExtraOption of userextras; trackBy: trackUserExtraById">{{userExtraOption.id}}</option>
+            </select>
+        </div>
+        <div [hidden]="!(editForm.controls.advogadoCorrente?.dirty && editForm.controls.advogadoCorrente?.invalid)">
+            <small class="form-text text-danger"
+                [hidden]="!editForm.controls.advogadoCorrente?.errors?.required" jhiTranslate="entity.validation.required">
                 This field is required.
             </small>
         </div>
