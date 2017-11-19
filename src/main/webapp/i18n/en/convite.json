@@ -1,0 +1,26 @@
+{
+    "discoveryApp": {
+        "convite" : {
+            "home": {
+                "title": "Convites",
+                "createLabel": "Create a new Convite",
+                "createOrEditLabel": "Create or edit a Convite"
+            },
+            "created": "A new Convite is created with identifier {{ param }}",
+            "updated": "A Convite is updated with identifier {{ param }}",
+            "deleted": "A Convite is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Convite {{ id }}?"
+            },
+            "detail": {
+                "title": "Convite"
+            },
+            "email": "Email",
+            "dataEnvio": "Data Envio",
+            "dataAceitado": "Data Aceitado",
+            "dataRejeitado": "Data Rejeitado",
+            "escritorio": "Escritorio",
+            "advogado": "Advogado"
+        }
+    }
+}

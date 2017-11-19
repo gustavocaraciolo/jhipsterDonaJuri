@@ -1,0 +1,37 @@
+
+<div *ngIf="convite">
+    <h2><span jhiTranslate="discoveryApp.convite.detail.title">Convite</span> {{convite.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="discoveryApp.convite.email">Email</span></dt>
+        <dd>
+            <span>{{convite.email}}</span>
+        </dd>
+        <dt><span jhiTranslate="discoveryApp.convite.dataEnvio">Data Envio</span></dt>
+        <dd>
+            <span>{{convite.dataEnvio | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="discoveryApp.convite.dataAceitado">Data Aceitado</span></dt>
+        <dd>
+            <span>{{convite.dataAceitado | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="discoveryApp.convite.dataRejeitado">Data Rejeitado</span></dt>
+        <dd>
+            <span>{{convite.dataRejeitado | date:'medium'}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'convite/'+ convite.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

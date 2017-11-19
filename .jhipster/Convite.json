@@ -1,0 +1,46 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipValidateRules": "required",
+            "relationshipName": "escritorio",
+            "otherEntityName": "escritorio",
+            "otherEntityRelationshipName": "convite"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipValidateRules": "required",
+            "relationshipName": "advogado",
+            "otherEntityName": "userExtra",
+            "otherEntityRelationshipName": "convite"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "email",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "dataEnvio",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "dataAceitado",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "dataRejeitado",
+            "fieldType": "ZonedDateTime"
+        }
+    ],
+    "changelogDate": "20171119084825",
+    "entityTableName": "convite",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false
+}
