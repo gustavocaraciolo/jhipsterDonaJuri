@@ -1,5 +1,6 @@
 package com.br.discovery.service;
 
+import com.br.discovery.config.Constants;
 import com.br.discovery.domain.User;
 
 import io.github.jhipster.config.JHipsterProperties;
@@ -30,6 +31,8 @@ public class MailService {
     private final Logger log = LoggerFactory.getLogger(MailService.class);
 
     private static final String USER = "user";
+
+    private static final String EMAIL = "email";
 
     private static final String BASE_URL = "baseUrl";
 
@@ -87,9 +90,27 @@ public class MailService {
     }
 
     @Async
+    public void sendConviteEmailFromTemplate(String email, String templateName, String titleKey) {
+        Locale locale = Locale.forLanguageTag(Constants.DEFAULT_LANGUAGE);
+        Context context = new Context(locale);
+        context.setVariable(EMAIL, email);
+        context.setVariable(BASE_URL, jHipsterProperties.getMail().getBaseUrl());
+        String content = templateEngine.process(templateName, context);
+        String subject = messageSource.getMessage(titleKey, null, locale);
+        sendEmail(email, subject, content, false, true);
+
+    }
+
+    @Async
     public void sendActivationEmail(User user) {
         log.debug("Sending activation email to '{}'", user.getEmail());
         sendEmailFromTemplate(user, "activationEmail", "email.activation.title");
+    }
+
+    @Async
+    public void sendConviteEmail(String email) {
+        log.debug("Sending activation email to '{}'", email);
+        sendConviteEmailFromTemplate(email, "convite", "email.activation.title");
     }
 
     @Async

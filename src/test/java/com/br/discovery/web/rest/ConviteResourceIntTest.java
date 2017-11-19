@@ -7,6 +7,7 @@ import com.br.discovery.domain.Escritorio;
 import com.br.discovery.domain.UserExtra;
 import com.br.discovery.repository.ConviteRepository;
 import com.br.discovery.service.ConviteService;
+import com.br.discovery.service.MailService;
 import com.br.discovery.service.dto.ConviteDTO;
 import com.br.discovery.service.mapper.ConviteMapper;
 import com.br.discovery.web.rest.errors.ExceptionTranslator;
@@ -70,6 +71,9 @@ public class ConviteResourceIntTest {
     private ConviteService conviteService;
 
     @Autowired
+    private MailService mailService;
+
+    @Autowired
     private MappingJackson2HttpMessageConverter jacksonMessageConverter;
 
     @Autowired
@@ -88,8 +92,8 @@ public class ConviteResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final ConviteResource conviteResource = new ConviteResource(conviteService);
-        this.restConviteMockMvc = MockMvcBuilders.standaloneSetup(conviteResource)
+        final ConviteResource conviteResource = new ConviteResource(conviteService, mailService);
+        this.restConviteMockMvc = MockMvcBuilders.standaloneSetup(conviteResource, mailService)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
             .setConversionService(createFormattingConversionService())

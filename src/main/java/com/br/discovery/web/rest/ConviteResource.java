@@ -1,5 +1,6 @@
 package com.br.discovery.web.rest;
 
+import com.br.discovery.service.MailService;
 import com.codahale.metrics.annotation.Timed;
 import com.br.discovery.service.ConviteService;
 import com.br.discovery.web.rest.errors.BadRequestAlertException;
@@ -37,8 +38,11 @@ public class ConviteResource {
 
     private final ConviteService conviteService;
 
-    public ConviteResource(ConviteService conviteService) {
+    private final MailService mailService;
+
+    public ConviteResource(ConviteService conviteService, MailService mailService) {
         this.conviteService = conviteService;
+        this.mailService = mailService;
     }
 
     /**
@@ -56,6 +60,7 @@ public class ConviteResource {
             throw new BadRequestAlertException("A new convite cannot already have an ID", ENTITY_NAME, "idexists");
         }
         ConviteDTO result = conviteService.save(conviteDTO);
+        mailService.sendConviteEmail(conviteDTO.getEmail());
         return ResponseEntity.created(new URI("/api/convites/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
