@@ -5,6 +5,7 @@ export class UserExtra implements BaseEntity {
         public id?: number,
         public userId?: number,
         public escritorioId?: number,
+        public conviteId?: number,
         public processoClientes?: BaseEntity[],
         public processoAdvogadoCorrentes?: BaseEntity[],
         public processoAdvogados?: BaseEntity[],

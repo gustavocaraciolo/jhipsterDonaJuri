@@ -18,6 +18,7 @@
             "nome": "Nome",
             "telefone": "Telefone",
             "email": "Email",
+            "convite": "Convite",
             "userExtra": "User Extra"
         }
     }

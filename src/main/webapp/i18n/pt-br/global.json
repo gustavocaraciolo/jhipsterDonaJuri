@@ -12,6 +12,7 @@
                 "processo": "Processo",
                 "pendencia": "Pendencia",
                 "anexo": "Anexo",
+                "convite": "Convite",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

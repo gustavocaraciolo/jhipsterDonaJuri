@@ -1,3 +1,9 @@
+entity Convite{
+    email String required,
+    dataEnvio ZonedDateTime,
+    dataAceitado ZonedDateTime,
+    dataRejeitado ZonedDateTime
+}
 entity Escritorio{
     nome String required,
     telefone String,
@@ -47,9 +53,13 @@ relationship ManyToOne{
     Pendencia{processo required} to Processo{pendencia}
 }
 
-
 relationship OneToOne{
     UserExtra{user required} to User{userExtra}
+}
+
+relationship OneToMany{
+    Convite{escritorio required} to Escritorio{convite},
+    Convite{advogado required} to UserExtra{convite}
 }
 
 paginate all with pagination

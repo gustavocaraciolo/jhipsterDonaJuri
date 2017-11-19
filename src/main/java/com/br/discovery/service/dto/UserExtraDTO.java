@@ -18,6 +18,8 @@ public class UserExtraDTO implements Serializable {
 
     private Long escritorioId;
 
+    private Long conviteId;
+
     public Long getId() {
         return id;
     }
@@ -40,6 +42,14 @@ public class UserExtraDTO implements Serializable {
 
     public void setEscritorioId(Long escritorioId) {
         this.escritorioId = escritorioId;
+    }
+
+    public Long getConviteId() {
+        return conviteId;
+    }
+
+    public void setConviteId(Long conviteId) {
+        this.conviteId = conviteId;
     }
 
     @Override

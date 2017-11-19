@@ -10,6 +10,7 @@
     <include file="config/liquibase/changelog/20171117234322_added_entity_Processo.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20171118221215_added_entity_Pendencia.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20171119004312_added_entity_Anexo.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171119084825_added_entity_Convite.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20171117234321_added_entity_constraints_UserExtra.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20171117234322_added_entity_constraints_Processo.xml" relativeToChangelogFile="false"/>

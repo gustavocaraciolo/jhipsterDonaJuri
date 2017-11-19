@@ -34,6 +34,13 @@
                 [(ngModel)]="escritorio.email"  />
         </div>
 
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="discoveryApp.escritorio.convite" for="field_convite">Convite</label>
+            <select class="form-control" id="field_convite" name="convite" [(ngModel)]="escritorio.conviteId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="conviteOption.id" *ngFor="let conviteOption of convites; trackBy: trackConviteById">{{conviteOption.id}}</option>
+            </select>
+        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">

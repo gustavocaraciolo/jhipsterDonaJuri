@@ -11,6 +11,7 @@ import { UserExtraPopupService } from './user-extra-popup.service';
 import { UserExtraService } from './user-extra.service';
 import { User, UserService } from '../../shared';
 import { Escritorio, EscritorioService } from '../escritorio';
+import { Convite, ConviteService } from '../convite';
 import { Processo, ProcessoService } from '../processo';
 import { Pendencia, PendenciaService } from '../pendencia';
 import { ResponseWrapper } from '../../shared';
@@ -28,6 +29,8 @@ export class UserExtraDialogComponent implements OnInit {
 
     escritorios: Escritorio[];
 
+    convites: Convite[];
+
     processos: Processo[];
 
     pendencias: Pendencia[];
@@ -38,6 +41,7 @@ export class UserExtraDialogComponent implements OnInit {
         private userExtraService: UserExtraService,
         private userService: UserService,
         private escritorioService: EscritorioService,
+        private conviteService: ConviteService,
         private processoService: ProcessoService,
         private pendenciaService: PendenciaService,
         private eventManager: JhiEventManager
@@ -50,6 +54,8 @@ export class UserExtraDialogComponent implements OnInit {
             .subscribe((res: ResponseWrapper) => { this.users = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
         this.escritorioService.query()
             .subscribe((res: ResponseWrapper) => { this.escritorios = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
+        this.conviteService.query()
+            .subscribe((res: ResponseWrapper) => { this.convites = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
         this.processoService.query()
             .subscribe((res: ResponseWrapper) => { this.processos = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
         this.pendenciaService.query()
@@ -95,6 +101,10 @@ export class UserExtraDialogComponent implements OnInit {
     }
 
     trackEscritorioById(index: number, item: Escritorio) {
+        return item.id;
+    }
+
+    trackConviteById(index: number, item: Convite) {
         return item.id;
     }
 

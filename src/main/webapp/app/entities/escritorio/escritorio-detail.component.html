@@ -16,6 +16,12 @@
         <dd>
             <span>{{escritorio.email}}</span>
         </dd>
+        <dt><span jhiTranslate="discoveryApp.escritorio.convite">Convite</span></dt>
+        <dd>
+            <div *ngIf="escritorio.conviteId">
+                <a [routerLink]="['/convite', escritorio.conviteId]">{{escritorio.conviteId}}</a>
+            </div>
+        </dd>
     </dl>
 
     <button type="submit"

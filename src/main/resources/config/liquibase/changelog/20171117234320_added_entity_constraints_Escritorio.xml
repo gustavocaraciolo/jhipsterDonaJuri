@@ -7,12 +7,12 @@
         Added the constraints for entity Escritorio.
     -->
     <changeSet id="20171117234320-2" author="jhipster">
-
-        <!--<addForeignKeyConstraint baseColumnNames="user_extra_id"
+        
+        <addForeignKeyConstraint baseColumnNames="convite_id"
                                  baseTableName="escritorio"
-                                 constraintName="fk_escritorio_user_extra_id"
+                                 constraintName="fk_escritorio_convite_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="user_extra"/>-->
+                                 referencedTableName="convite"/>
 
     </changeSet>
 </databaseChangeLog>

@@ -5,6 +5,7 @@ import { DiscoveryUserExtraModule } from './user-extra/user-extra.module';
 import { DiscoveryProcessoModule } from './processo/processo.module';
 import { DiscoveryPendenciaModule } from './pendencia/pendencia.module';
 import { DiscoveryAnexoModule } from './anexo/anexo.module';
+import { DiscoveryConviteModule } from './convite/convite.module';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
@@ -14,6 +15,7 @@ import { DiscoveryAnexoModule } from './anexo/anexo.module';
         DiscoveryProcessoModule,
         DiscoveryPendenciaModule,
         DiscoveryAnexoModule,
+        DiscoveryConviteModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],

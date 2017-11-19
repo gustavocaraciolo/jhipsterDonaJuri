@@ -14,6 +14,12 @@
                 <a [routerLink]="['/escritorio', userExtra.escritorioId]">{{userExtra.escritorioId}}</a>
             </div>
         </dd>
+        <dt><span jhiTranslate="discoveryApp.userExtra.convite">Convite</span></dt>
+        <dd>
+            <div *ngIf="userExtra.conviteId">
+                <a [routerLink]="['/convite', userExtra.conviteId]">{{userExtra.conviteId}}</a>
+            </div>
+        </dd>
     </dl>
 
     <button type="submit"

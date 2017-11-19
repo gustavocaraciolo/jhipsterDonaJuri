@@ -35,6 +35,9 @@ public class Escritorio implements Serializable {
     @Column(name = "email")
     private String email;
 
+    @ManyToOne
+    private Convite convite;
+
     @OneToMany(mappedBy = "escritorio")
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -86,6 +89,19 @@ public class Escritorio implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Convite getConvite() {
+        return convite;
+    }
+
+    public Escritorio convite(Convite convite) {
+        this.convite = convite;
+        return this;
+    }
+
+    public void setConvite(Convite convite) {
+        this.convite = convite;
     }
 
     public Set<UserExtra> getUserExtras() {

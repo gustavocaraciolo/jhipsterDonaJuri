@@ -34,6 +34,9 @@ public class UserExtra implements Serializable {
     @NotNull
     private Escritorio escritorio;
 
+    @ManyToOne
+    private Convite convite;
+
     @OneToMany(mappedBy = "cliente")
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -87,6 +90,19 @@ public class UserExtra implements Serializable {
 
     public void setEscritorio(Escritorio escritorio) {
         this.escritorio = escritorio;
+    }
+
+    public Convite getConvite() {
+        return convite;
+    }
+
+    public UserExtra convite(Convite convite) {
+        this.convite = convite;
+        return this;
+    }
+
+    public void setConvite(Convite convite) {
+        this.convite = convite;
     }
 
     public Set<Processo> getProcessoClientes() {

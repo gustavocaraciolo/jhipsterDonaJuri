@@ -20,5 +20,11 @@
                                  referencedColumnNames="id"
                                  referencedTableName="escritorio"/>
 
+        <addForeignKeyConstraint baseColumnNames="convite_id"
+                                 baseTableName="user_extra"
+                                 constraintName="fk_user_extra_convite_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="convite"/>
+
     </changeSet>
 </databaseChangeLog>

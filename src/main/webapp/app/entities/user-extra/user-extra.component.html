@@ -19,6 +19,7 @@
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="userId"><span jhiTranslate="discoveryApp.userExtra.user">User</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="escritorioId"><span jhiTranslate="discoveryApp.userExtra.escritorio">Escritorio</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="conviteId"><span jhiTranslate="discoveryApp.userExtra.convite">Convite</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -31,6 +32,11 @@
                 <td>
                     <div *ngIf="userExtra.escritorioId">
                         <a [routerLink]="['../escritorio', userExtra.escritorioId  ]" >{{userExtra.escritorioId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="userExtra.conviteId">
+                        <a [routerLink]="['../convite', userExtra.conviteId  ]" >{{userExtra.conviteId}}</a>
                     </div>
                 </td>
                 <td class="text-right">

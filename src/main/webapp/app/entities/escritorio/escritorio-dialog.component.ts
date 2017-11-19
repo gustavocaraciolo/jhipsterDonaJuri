@@ -9,6 +9,8 @@ import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { Escritorio } from './escritorio.model';
 import { EscritorioPopupService } from './escritorio-popup.service';
 import { EscritorioService } from './escritorio.service';
+import { Convite, ConviteService } from '../convite';
+import { ResponseWrapper } from '../../shared';
 
 @Component({
     selector: 'jhi-escritorio-dialog',
@@ -19,16 +21,21 @@ export class EscritorioDialogComponent implements OnInit {
     escritorio: Escritorio;
     isSaving: boolean;
 
+    convites: Convite[];
+
     constructor(
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
         private escritorioService: EscritorioService,
+        private conviteService: ConviteService,
         private eventManager: JhiEventManager
     ) {
     }
 
     ngOnInit() {
         this.isSaving = false;
+        this.conviteService.query()
+            .subscribe((res: ResponseWrapper) => { this.convites = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
     }
 
     clear() {
@@ -63,6 +70,10 @@ export class EscritorioDialogComponent implements OnInit {
 
     private onError(error: any) {
         this.jhiAlertService.error(error.message, null, null);
+    }
+
+    trackConviteById(index: number, item: Convite) {
+        return item.id;
     }
 }
 
