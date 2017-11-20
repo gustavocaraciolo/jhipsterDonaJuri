@@ -10,7 +10,7 @@ import javax.persistence.Lob;
 /**
  * A DTO for the Anexo entity.
  */
-public class AnexoDTO implements Serializable {
+public class AnexoDTO extends AbstractAuditingDTO implements Serializable {
 
     private Long id;
 

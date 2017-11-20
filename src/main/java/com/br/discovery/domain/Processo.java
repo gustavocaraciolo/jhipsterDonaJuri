@@ -19,7 +19,7 @@ import com.br.discovery.domain.enumeration.Status;
 @Entity
 @Table(name = "processo")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class Processo implements Serializable {
+public class Processo extends AbstractAuditingEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

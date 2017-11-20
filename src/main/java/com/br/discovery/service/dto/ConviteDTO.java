@@ -11,7 +11,7 @@ import java.util.Objects;
 /**
  * A DTO for the Convite entity.
  */
-public class ConviteDTO implements Serializable {
+public class ConviteDTO extends AbstractAuditingDTO implements Serializable {
 
     private Long id;
 

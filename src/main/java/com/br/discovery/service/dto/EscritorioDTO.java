@@ -10,7 +10,7 @@ import java.util.Objects;
 /**
  * A DTO for the Escritorio entity.
  */
-public class EscritorioDTO implements Serializable {
+public class EscritorioDTO extends AbstractAuditingDTO implements Serializable {
 
     private Long id;
 

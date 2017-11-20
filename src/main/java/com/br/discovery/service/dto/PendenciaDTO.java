@@ -13,7 +13,7 @@ import com.br.discovery.domain.enumeration.Status;
 /**
  * A DTO for the Pendencia entity.
  */
-public class PendenciaDTO implements Serializable {
+public class PendenciaDTO extends AbstractAuditingDTO implements Serializable {
 
     private Long id;
 

@@ -11,7 +11,7 @@ import com.br.discovery.domain.enumeration.Status;
 /**
  * A DTO for the Processo entity.
  */
-public class ProcessoDTO implements Serializable {
+public class ProcessoDTO extends AbstractAuditingDTO implements Serializable {
 
     private Long id;
 

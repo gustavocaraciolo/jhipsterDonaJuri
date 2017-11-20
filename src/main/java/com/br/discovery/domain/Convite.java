@@ -18,7 +18,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "convite")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class Convite implements Serializable {
+public class Convite extends AbstractAuditingEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

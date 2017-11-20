@@ -62,6 +62,7 @@ public class CacheConfiguration {
             cm.createCache(com.br.discovery.domain.Convite.class.getName(), jcacheConfiguration);
             cm.createCache(com.br.discovery.domain.Convite.class.getName() + ".escritorios", jcacheConfiguration);
             cm.createCache(com.br.discovery.domain.Convite.class.getName() + ".advogados", jcacheConfiguration);
+            cm.createCache(com.br.discovery.domain.EntityAuditEvent.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

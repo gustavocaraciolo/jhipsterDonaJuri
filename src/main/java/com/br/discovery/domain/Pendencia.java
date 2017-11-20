@@ -19,7 +19,7 @@ import com.br.discovery.domain.enumeration.Status;
 @Entity
 @Table(name = "pendencia")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class Pendencia implements Serializable {
+public class Pendencia extends AbstractAuditingEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
