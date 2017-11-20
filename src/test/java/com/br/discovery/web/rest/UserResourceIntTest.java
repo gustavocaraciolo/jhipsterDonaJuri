@@ -540,7 +540,7 @@ public class UserResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$").isArray())
-            .andExpect(jsonPath("$").value(containsInAnyOrder(AuthoritiesConstants.ADVOGADO, AuthoritiesConstants.ADMIN)));
+            .andExpect(jsonPath("$").value(containsInAnyOrder(AuthoritiesConstants.ADMIN, AuthoritiesConstants.ADVOGADO, AuthoritiesConstants.CLIENTE, AuthoritiesConstants.COORDENADOR, AuthoritiesConstants.USER)));
     }
 
     @Test
